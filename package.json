@@ -1,0 +1,24 @@
+{
+  "name": "codemarteryzone",
+  "version": "1.0.0",
+  "description": "it is our first project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taruncodex/CodeMasteryZone.git"
+  },
+  "author": "Tarun Rathore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taruncodex/CodeMasteryZone/issues"
+  },
+  "homepage": "https://github.com/taruncodex/CodeMasteryZone#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.3",
+    "nodemon": "^3.1.0"
+  }
+}

@@ -6,22 +6,24 @@
     <title>CodeMasteryZone</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
    
-    <link rel="stylesheet" href="css\project_CSS.css">
+    <link rel="stylesheet" href="css/project_CSS.css">
 </head>
 <body>
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #9cd2e4;"  >
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">CodeMasteryZone</a>
+          <a class="navbar-brand px-4" href="" style="font-weight: 700;">CodeMasteryZone</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div  class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0 px-5 " >
-              <li class="nav-item" >
-                <a class="nav-link  active" aria-current="page" href="#"> <button class="btn btn-primary"> Log-in </button>  </a>
-              </li>
+              <!-- Login form -->
+            <form action="/log-in.html" method="post"> <li class="nav-item" >
+                <a class="nav-link  active" aria-current="page" href="/log-in.html"> <button class="btn btn-primary" type="submit"> Log-in </button>  </a>
+              </li> </form> 
+
               <li class="nav-item" >
                 <a class="nav-link bold py-3" href="#"   style="color: black; font-weight: 600;">About us</a>
               </li>
@@ -42,15 +44,16 @@
       <div class="container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
           <div class="col-10 col-sm-8 col-lg-6">
-            <img src="4.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            <img src="/image/4.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
           </div>
           <div class="col-lg-6">
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Unleash Your Coding Potential at CodeMasteryZone!</h1>
             <p class="lead" style="color:beige;">CodeMastery Zone is a dynamic coding practice website. Focused on providing a user-friendly interface and diverse challenges, our platform is designed to enhance problem-solving abilities.</p>
+          <form action="/signup.html" method="post">
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <button type="button" class="btn btn-primary btn-lg px-5 me-md-2 " fdprocessedid="c4a0nch">Sign-Up</button>
+              <button type="submit" class="btn btn-primary btn-lg px-5 me-md-2 " fdprocessedid="c4a0nch">Sign-Up</button>
              <div>
-                
+            </form>
              </div>
             </div>
           </div>
@@ -63,12 +66,12 @@
    
  <!-- FEATURES -->
 
- <div class="container px-4 py-5" id="featured-3 " style="background-image: ;">
+ <div class="container px-4 py-5" id="featured-3 " >
   <h2 class="pb-2 border-bottom" style="font-weight:700;">Why to use CodeMasteryZone </h2>
   <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
     <div class="feature col">
       <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
+     <img src="image/search.svg" height="30" alt="">
       </div>
       <h3 class="fs-2 text-body-emphasis">Various and classified Problems</h3>
       <p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Access a vast repository of problems categorized by topic and difficulty level for a well-rounded coding practice experience.
@@ -81,7 +84,7 @@
 
     <div class="feature col">
       <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"></use></svg>
+        <img src="image/calendar3.svg" height="30" alt="">
       </div>
       <h3 class="fs-2 text-body-emphasis">Performance Tracking
       </h3>
@@ -94,7 +97,7 @@
 
     <div class="feature col">
       <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+        <img src="image/dash-square-dotted.svg" height="30" alt="">
       </div>
       <h3 class="fs-2 text-body-emphasis">Code editor with syntax Highlighting
       </h3>
@@ -110,7 +113,7 @@
   <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
     <div class="feature col">
       <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
+        <img src="image/card-list.svg" height="30" alt="">
       </div>
       <h3 class="fs-2 text-body-emphasis">Leaderboard
       </h3>
@@ -124,7 +127,7 @@
 
     <div class="feature col">
       <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"></use></svg>
+        <img src="image/lightbulb.svg" height="30" alt="">
       </div>
       <h3 class="fs-2 text-body-emphasis">Free Solution & Hints
       </h3>
@@ -138,76 +141,69 @@
    
   </div>
 </div>
-  
-
-
-   <!-- Footer -->
 
     <!-- Footer -->
-  <div class="gradient-backgrounda ">
-    <section id="footer" class="gradient-background" >
+  <div class="gradient-background2">
+    <section id="footer" class="gradient-background2" >
       <div class="container">
         <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 mt-5 ">
           
           <div class="col mb-3">
-            <img src="2.png" height="50" width="50" alt="logo">
-            <p class="text-body-secondary" style="font-weight: 600; color: black;">© 2023</p>
+            <img src="image/2.png" height="50" width="50" alt="logo">
+            <p class="text-body-secondary" style="font-weight:bolder;">© 2023</p>
           </div>
       
           <div class="col mb-3">
       
           </div>
-      
+
           <div class="col mb-3">
-            <h5>Section</h5>
+            <h5>Our Team</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+              <li class="nav-item mb-2" style="font-weight: 650;"><a href="#" class="nav-link p-0 text-body-secondary"><img src="image/tarun6.svg" width="30" height="30" alt="Instagram"> Tarun Rathore</a></li>
+              <li class="nav-item mb-2" style="font-weight: 650;"><a href="#" class="nav-link p-0 text-body-secondary"><img src="image/sugam6.svg" width="30" height="30" alt="Instagram"> Sugam Upadhyay </a> </li>
+              <li class="nav-item mb-2" style="font-weight: 650;"><a href="#" class="nav-link p-0 text-body-secondary"><img src="image/keshav6.svg" width="30" height="30" alt="Instagram"> Keshav Singh</a></li>
+            </ul>
+          </div>
+
+          <div class="col mb-3">
+            <h5>Contact us</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2" style="font-weight: 650;"><a href="#" class="nav-link p-0 text-body-secondary">tarunrathore200@gmail.com</a></li>
+              <li class="nav-item mb-2" style="font-weight: 650;"><a href="#" class="nav-link p-0 text-body-secondary">Sugamupadhaya2@gmail.com</a></li>
+              <li class="nav-item mb-2" style="font-weight: 650;"><a href="#" class="nav-link p-0 text-body-secondary">keshavsingh0818558@gmail.com</a></li>
             </ul>
           </div>
       
           <div class="col mb-3">
-            <h5>Section</h5>
+            <h5>Actions</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-            </ul>
-          </div>
-      
-          <div class="col mb-3">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+              <li class="nav-item mb-2" style="font-weight: 650;" ><a href="#" class="nav-link p-0 text-body-secondary">Register</a></li>
+              <li class="nav-item mb-2" style="font-weight: 650;" ><a href="#" class="nav-link p-0 text-body-secondary">Log-In</a></li>
+              <li class="nav-item mb-2" style="font-weight: 650;"><a href="#" class="nav-link p-0 text-body-secondary">Give Feadback</a></li>
             </ul>
           </div>
         </footer>
+        <div class="container">
+          <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+              <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1" previewlistener="true">
+                <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+              </a>
+              <span class="mb-3 mb-md-0 text-body-secondary">© 2024 CodeMasteryZone, Inc</span>
+            </div>
+        
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+              <li class="ms-3"><a class="text-body-secondary" href="#"><img src="image/twitter.svg" width="30" height="30" alt="twitter"></a></li>
+              <li class="ms-3"><a class="text-body-secondary" href="#"><img src="image/github.svg"  height="30" alt="twitter"></a></li>
+              <li class="ms-3"><a class="text-body-secondary" href="#"><img src="image/instagram.svg" height="30" alt="twitter"></a></li>
+            </ul>
+          </footer>
+        </div>
+
       </div>
     </section>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
