@@ -6,7 +6,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("Public"));
 
 app.get("/" , function(req , res){
- res.sendFile(__dirname + "/HomePage.html")
+ res.sendFile(__dirname + "/index.html")
 
 });
  
