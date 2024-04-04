@@ -14,14 +14,14 @@
   <header>
   <h4> Log-In </h4>
   </header>
-  <form>
+  <form action="/login" method="post">
     <div class="form_wrapper">
-      <input id="input" type="text" required>
-      <label for="input">Gmail Or Username</label>
+      <input id="input" name="mail" type="email" required>
+      <label for="input">Gmail</label>
       <i class="material-icons">person</i>
     </div>
     <div class="form_wrapper">
-      <input id="password" type="password" required>
+      <input id="password"  name="password2" type="password" required>
       <label for="password">Password</label>
       <i class="material-icons">lock</i>
     </div>
@@ -32,12 +32,13 @@
       </div>
       <a href="#">Forgot Password ?</a>
     </div>
-    <button>Login</button>
+    <button type="submit">Login</button>
     <div class="new_account">
-      Don't have account ? <a href="#">Sign up</a>
+      Don't have account ? <a href="/register">Sign up</a>
     </div>
   </form>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
 

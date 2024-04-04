@@ -1,0 +1,369 @@
+
+  { "_id": 1, 
+"title": "Remove Element",
+"difficulty": "",
+"description": "Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. ",
+"Input": "['nums = [3,2,2,3], val = 3','nums = [0,1,2,2,3,0,4,2], val = 2']",
+"Output": "['2, nums = [2,2,_,_]','5, nums = [0,1,4,0,3,_,_,_]']"
+},
+    
+    { "_id": 2, 
+      "title": "Remove Duplicates from Sorted Array",
+      "description": "Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+    
+    Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
+    
+    Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+    Return k.",
+    "Input": "nums = [1,1,2]",
+    "Output": "2, nums = [1,2,_]"
+    },
+    
+    { "_id": 3, 
+      "title": "Merge two sorted arrays",
+      "description": "Given two sorted arrays, the task is to merge them in a sorted manner.",
+      "Input": "arr1[] = { 1, 3, 4, 5}, arr2[] = {2, 4, 6, 8}",
+      "Output":"arr3[] = {1, 2, 3, 4, 4, 5, 6, 8}"
+    },
+    
+    { "_id": 4, 
+      "title": "Counting frequencies of array elements",
+      "description": "Given an array which may contain duplicates, print all elements and their frequencies.",
+    "Input": ["arr[] = {10, 20, 20, 10, 10, 20, 5, 20}","arr[] = {10, 20, 20}"],
+    "Output":"10 3
+             20 4
+             5  1
+    ",
+    },
+    
+    { "_id": 5, 
+      "difficulty": "Easy"
+      "title": "Find the maximum and minimum element",
+      "description": "Given an array A[] of size n, you need to find the maximum and minimum element present in the array. Your algorithm should make the minimum number of comparisons.",
+    "Input": "A[] = {-8, -3, -10, -32, -1}",
+    "Output": "Maximum: -1, Minimum: -32"
+    }
+    ,
+    
+    
+    { "_id": 6, 
+      "title": "Reverse The Array",
+      "difficulty": "Easy",
+      "description" : "Given an array/list 'ARR' of integers and a position ‘M’. You have to reverse the array after that position.",
+    "Input": " ARR = {1, 2, 3, 4, 5, 6} and M = 3",
+    "Output": "{1, 2, 3, 4, 6, 5}"
+    },
+    
+    { "_id": 7, 
+      "title": "Search a Number",
+      "difficulty": "Easy",
+      "description": "Search whether an element exists in array or not.",
+    "Input": "arr[] = { 1, 3, 4, 5}, num = 4",
+    "Output": "True"
+    },
+    { "_id": 8, 
+"title": "Move all zeros to the End",
+"difficulty": "Medium",
+"description": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.",
+"Input": "nums = [0,1,0,3,12]",
+"Output": "[1,3,12,0,0]"
+}
+
+    
+    { "_id": 9, 
+      "title": "Sort the Array",
+      "difficulty": "Medium",
+      "description": "Sort the array in ascending order.",
+    "Input": "nums = [2,4,3,9,5,12]",
+    "Output": "[2,3,4,5,9,12]"
+    },
+    
+    { "_id": 10, 
+      "title": "Sum of Array",
+      "difficulty": "Easy",
+      "description": "Sum all the elements of the array.",
+    "Input": "arr[] = { 1, 3, 4, 5}",
+    "Output": "sum = 13"
+    }
+     //https://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/
+    { "__id": 11,  
+      "title": "Find the middle of a given linked list",
+      "difficulty": "easy",
+      "description": "Auxiliary Given a singly linked list, find the middle of the linked list. For example, if the given linked list is 1->2->3->4->5 then the output should be 3. 
+      If there are even nodes, then there would be two middle nodes, we need to print the second middle element. 
+      For example, if the given linked list is 1->2->3->4->5->6 then the output should be 4. ",
+    "Input": "",
+    "Output": ""
+    }//https://www.geeksforgeeks.org/top-20-linked-list-interview-question/
+    
+    { "__id": 12, 
+      "title": "Reverse a Linked List",
+      "difficulty": "easy",
+      "description": "Given a pointer to the head node of a linked list, the task is to reverse the linked list. We need to reverse the list by changing the links between nodes.",
+    "Input": "Head of following linked list 
+    1->2->3->4->NULL ",
+    "Output": "Linked list should be changed to, 
+    4->3->2->1->NULL"
+    }//https://www.geeksforgeeks.org/top-20-linked-list-interview-question/
+    
+    { "__id": 13, 
+      "title": "Rotate a Linked List",
+      "difficulty": "easy",
+      "description": "Given a singly linked list, The task is to rotate the linked list counter-clockwise by k nodes.",
+    "Input": "linked list = 10->20->30->40->50->60, k = 4",
+    "Output": "50->60->10->20->30->40."
+    }
+    
+    { "_id": 14 , 
+    "title": "Program for Nth node from the end of a Linked List",
+    "difficulty": "easy",
+    "description": "Given a Linked List and a number N, write a function that returns the value at the Nth node from the end of the Linked List.",
+  "Input": "1 -> 2 -> 3 -> 4, N = 3",
+  "Output": "2"
+  },{ "_id":15 , 
+  "title": "Remove duplicate element from sorted Linked List",
+  "difficulty": "easy",
+  "description": "Given a singly linked list consisting of N nodes. The task is to remove duplicates (nodes with duplicate values) from the given list (if exists).",
+"Input": "LinkedList: 2->2->4->5",
+"Output": " 2 4 5"
+},{ "_id": 16 ,
+"title": "Merge a linked list into another linked list at alternate positions",
+"difficulty": "easy",
+"description": "Given two linked lists, insert nodes of second list into first list at alternate positions of first list. 
+For example, if first list is 5->7->17->13->11 and second is 12->10->2->4->6, the first list should become 5->12->7->10->17->2->13->4->11->6 and second list should become empty. The nodes of second list should only be inserted when there are positions available. For example, if the first list is 1->2->3 and second list is 4->5->6->7->8, then first list should become 1->4->2->5->3->6 and second list to 7->8.",
+"Input": " L1 = 5->7->17->13->11 , L2 =12->10->2->4->6",
+"Output": "5->12->7->10->17->2->13->4->11->6"
+},{ "_id":17 ,
+"title": "Function to check if a singly linked list is palindrome",
+"difficulty": "Medium",
+"description": "Given a singly linked list of characters, write a function that returns true if the given list is a palindrome, else false.",
+"Input": "R->A->D->A->R->NULL",
+"Output": "Yes"
+},{ "_id":18 , 
+"title": "Reverse a Linked List in groups of given size",
+"difficulty": "Medium",
+"description": "Given a linked list of size N. The task is to reverse every k nodes (where k is an input to the function) in the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should be considered as a group and must be reversed",
+"Input": "LinkedList: 1->2->2->4->5->6->7->8
+K = 4",
+"Output": " 4 2 2 1 8 7 6 5 "
+},{ "_id":19, 
+"title": "Convert singly linked list into circular linked list",
+"difficulty": "Medium",
+"description": "Given a singly linked list, we have to convert it into circular linked list. For example, we have been given a singly linked list with four nodes and we want to convert this singly linked list into circular linked list.",
+"Input": "",
+"Output": ""
+},{ "_id":20 , 
+"title": "Remove duplicates from an unsorted doubly linked list",
+"difficulty": "Medium",
+"description": "Given an unsorted doubly linked list containing n nodes. The problem is to remove duplicate nodes from the given list.",
+"Input": "DLL: 8<->4<->4<->6<->4<->6<->8<->4<->10<->12<->12",
+"Output": "8<->4<->6<->10<->12"
+},{ "_id": 21,
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": 22, 
+"title": "Reverse a sublist of linked list",
+"difficulty": "Medium",
+"description": "We are given a linked list and positions m and n. We need to reverse the linked list from position m to n.",
+"Input": "10->20->30->40->50->60->70->NULL
+m = 3, n = 6",
+"Output": "10->20->60->50->40->30->70->NULL"
+},{ "_id": 23, 
+"title": "Reverse a Linked List in groups of given size",
+"difficulty": "Hard",
+"description": "Given a linked list, write a function to reverse every k nodes (where k is an input to the function). ",
+"Input": "1->2->3->4->5->6->7->8->NULL, K = 3 ",
+"Output": "3->2->1->6->5->4->8->7->NULL"
+},{ "_id":24 , 
+"title": "Rearrange a given linked list in-place.",
+"difficulty": "Hard",
+"description": "Given a singly linked list L0 -> L1 -> … -> Ln-1 -> Ln. Rearrange the nodes in the list so that the new formed list is : L0 -> Ln -> L1 -> Ln-1 -> L2 -> Ln-2 … You are required to do this in place without altering the nodes’ values. ",
+"Input": "1 -> 2 -> 3 -> 4",
+"Output": "1 -> 4 -> 2 -> 3"
+},{ "_id": 25, 
+"title": "Merge K sorted linked lists",
+"difficulty": "Hard",
+"description": "Given K sorted linked lists of size N each, the task is to merge them all maintaining their sorted order.",
+"Input": "K = 3, N =  4
+list1 = 1->3->5->7->NULL
+list2 = 2->4->6->8->NULL
+list3 = 0->9->10->11->NULL",
+"Output": "0->1->2->3->4->5->6->7->8->9->10->11"
+},{ "_id":26 , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id":27 , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id":28 , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": 29, 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": 30, 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": 31, 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id":32 , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id":33 , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id":34 , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id":35 , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+},{ "_id": , 
+"title": "",
+"difficulty": "",
+"description": "",
+"Input": "",
+"Output": ""
+}

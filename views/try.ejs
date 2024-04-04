@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Questions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   
+    <style>
+        body{
+          background-color: rgb(197, 225, 251);
+        }
+        table{
+          border: 1px solid black;
+          border-collapse: collapse;
+          border-spacing: 20px;
+          width: 68vw;
+          
+        }
+        tr{
+          border: 1px solid black;
+          height: 4vh;
+        }
+        th{
+          background-color: rgba(197, 221, 244, 0.842);
+          border: 1px solid black;
+          font-size: large;
+        }
+        td{
+          background-color: rgba(242, 224, 224, 0.619);
+          border: 1px solid black;
+          padding: 8px 20px;
+        }
+        #first-col{
+          background-color: rgb(214, 234, 246);
+          width: 7vw;
+          margin-left: 1.2vw;
+        }
+        #filter{
+          background-color: rgb(214, 234, 246);
+          height: 87.9vh;
+          width: 20vw;
+        }
+        #table-container{
+          display: flex;
+          flex-flow: row wrap;
+        }
+  
+        /* The container */
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  }
+   </style>
+
+
+</head>
+<body>
+     <!-- NAVBAR -->
+     <nav class="navbar navbar-expand-lg" style="background-color: #9cd2e4;  "  >
+        <div class="container-fluid">
+          <a class="navbar-brand px-4" href="/" style="font-weight: 700; color: #000; ">CodeMasteryZone</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div  class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+         
+              <!-- Login form -->
+              <div class="dropdown pt-2">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  try
+                </button>
+                <ul class="dropdown-menu">
+                  <li class="nav-item" >
+                    <a class="nav-link bold py-3" href=""   style="color: black; font-weight: 600;">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link py-3" href=""   style="color:black; font-weight: 600;">Leaderboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link py-3" href="#"   style="color:black; font-weight: 600;">Log-out</a>
+                  </li>
+                  <li class="nav-item" >
+                    <a class="nav-link bold py-3" href="/aboutUs"   style="color: black; font-weight: 600;">About us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link py-3" href="/contactUs"   style="color:black; font-weight: 600;">Contact Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link py-3" href="#"   style="color:black; font-weight: 600;">FAQs</a>
+                  </li>
+              </div>
+           
+           
+           
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div id="table-container">  
+    <div id="first-col">
+  
+    </div>  
+    <div id="filter"> 
+      <h1>DIFFICULTY</h1>
+      <label class="container">Easy
+      <input type="radio" name="difficulty">
+      <span class="checkmark"></span>
+      </label>
+      <label class="container">Medium
+      <input type="radio" name="difficulty">
+      <span class="checkmark"></span>
+      </label>
+      <label class="container">Hard
+      <input type="radio" name="difficulty">
+      <span class="checkmark"></span>
+      </label>
+       
+      <br>
+      <br>
+      <br>
+  
+      <h1>TOPICS</h1>
+      <label class="container">Array
+      <input type="radio" name="topic">
+      <span class="checkmark"></span>
+      </label>
+      <label class="container">String
+      <input type="radio" name="topic">
+      <span class="checkmark"></span>
+      </label>
+      <label class="container">Linked List
+      <input type="radio" name="topic">
+      <span class="checkmark"></span>
+      </label>
+      <label class="container">Stack
+      <input type="radio" name="topic">
+      <span class="checkmark"></span>
+      </label>
+      <label class="container">Queue
+      <input type="radio" name="topic">
+      <span class="checkmark"></span>
+      </label>
+      <label class="container">Sorting
+      <input type="radio" name="topic">
+      <span class="checkmark"></span>
+      </label>
+  
+    </div>
+  
+    <!-- Add Question here -->
+    <div id="quesTable">
+      <table>
+          <thead>
+              <tr>
+                  <th style="width: 1vw;">S.N.</th>
+                  <th>Title</th>
+                  <th id="difficulty" style="width: 7vw; ">Difficulty</th>
+                  <th id="topic" style="width: 7vw; ">Topic</th> 
+                  <th id="status" style="width: 7vw; ">Status</th> 
+              </tr>
+          </thead>
+          <tbody>
+              <% questions.forEach((question, index) => { %>
+                  <tr>
+                      <td><%= question._id %></td>
+                      <td><%= question.title %></td>
+                      <td><%= question.difficulty %></td>
+                      <td><%= question.topic %></td> 
+                      <td></td> 
+                  </tr>
+              <% }); %>
+          </tbody>
+      </table>
+  </div>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  </body>
+</html>
