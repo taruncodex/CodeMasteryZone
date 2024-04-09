@@ -15,7 +15,7 @@ app.get("/",function(req,res){
   res.sendFile("C:/CMZ/Code Editor/index.html");
 });
 
-app.post("/compile",function(req,res){
+app.post("Code Editor/api/compile", async function (req, res){
   let code = req.body.code;
   let input = req.body.input;
   let lang = req.body.lang;
@@ -25,6 +25,7 @@ app.post("/compile",function(req,res){
                 let envdata = {OS:"windows",cmd:"g++",options:{timeout:10000}};
                 compiler.compileCPP(envdata,code,function(data){
                   if(data.output)
+                
                     res.send(data);
                   else
                     res.end({output:"error"});
@@ -84,7 +85,9 @@ app.post("/compile",function(req,res){
     catch(e){
         console.log("Error");
     }
-});
-app.listen(6200,()=>{
-  console.log("Listening.........");
-});
+})
+
+// module.exports = app;
+app.listen( 3002, function (){
+  console.log("listening on the port 3001");
+}); 

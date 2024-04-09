@@ -1,7 +1,8 @@
 const express =  require ("express");
 const bodyParser = require ("body-parser");
 const mongoose = require('mongoose');
-
+const compiler = require("compilex");
+// const compilerApi = require('./api');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -68,7 +69,6 @@ const Loginuser = mongoose.model('loginuser', loginSchema);
 const Question = mongoose.model('Question', questionSchema  );
 
 
-
 //Route to handle form submission.  
 app.post('/signup', async function (req, res) {
     const { name, email, password } = req.body; // Destructure the request body
@@ -100,7 +100,7 @@ const {mail , password2 } = req.body;
 if(Check.password === password2){
     try {
         const questions = await Question.find(); // Fetch all questions
-        res.render('try', { questions: questions }); // Pass questions to the template
+        res.redirect("/")// Pass questions to the template
       } catch (err) {
         console.error('Error fetching questions:', err);
         res.status(500).send('Internal Server Error');
@@ -111,11 +111,78 @@ if(Check.password === password2){
 }); 
 
 
+app.get("/", async function(req, res) {
+    const page = parseInt(req.query.page) || 1; // Get the current page from query params, default to 1
+    const perPage = 18; // Number of questions per page
+    try {
+        const totalQuestions = await Question.countDocuments();
+        const totalPages = Math.ceil(totalQuestions / perPage);
+
+        const questions = await Question.find()
+            .skip((page - 1) * perPage) // Skip the correct number of documents
+            .limit(perPage); // Limit the number of documents
+
+        // Render the try.ejs file with the necessary variables
+        res.render('try', {
+            username: Check.name, // Pass the username here
+            questions: questions,
+            totalPages: totalPages,
+            currentPage: page
+        });
+    } catch (err) {
+        console.error('Error fetching questions:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// <-- Questions filtering route -->
+// Route to fetch questions with optional filtering
+app.get("/questions", async (req, res) => {
+    const { difficulty, topic } = req.query;
+    let query = {};
+    console.log(query);
+    const page = parseInt(req.query.page) || 1; // Get the current page from query params, default to 1
+    const perPage = 18; // Number of questions per page
+    // Build the query based on provided parameters
+    if (difficulty) {
+        query.difficulty = difficulty;
+    }
+    if (topic) {
+        query.topic = topic;
+    }
+    
+    console.log(query);
+    try {
+        const totalQuestions = await Question.countDocuments();
+        const totalPages = Math.ceil(totalQuestions / perPage);
+
+        const questions1 = await Question.find(query)
+            .skip((page - 1) * perPage) // Skip the correct number of documents
+            .limit(perPage); // Limit the number of documents
+        
+        res.render('try', {
+            username: Check.name, // Pass the username here
+            questions: questions1,
+            totalPages: totalPages,
+            currentPage: page
+        });
+        
+
+
+    } catch (err) {
+        console.error('Error fetching questions:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+
+
+
 
 // <--TO SHOW HOMEPAGE -->
-app.get("/" , function(req , res){
- res.sendFile(__dirname + "/HomePage.html")
-
+app.get("/home" , function(req , res){
+    res.sendFile(__dirname + "/HomePage.html")
 });
 // <--DIRECT TO LOG-IN PAGE-->
 app.post("/log-in.html" , function(req, res){
@@ -124,7 +191,6 @@ app.post("/log-in.html" , function(req, res){
 
 // <--DIRECT TO SIGN-UP PAGE-->
 app.post("/signup.html" , function(req , res){
-   
     res.sendFile(__dirname + "/signup.html")
 });
 
@@ -138,7 +204,7 @@ app.post("/success", function (req , res) {
 });
 
 app.post("/contactUs", function (req , res) {
-    res.redirect("/");
+    res.redirect("/home");
 });
 app.get("/contactUs", function (req , res) {
     res.sendFile(__dirname + "/contactUs.html");
