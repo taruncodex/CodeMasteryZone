@@ -24,18 +24,18 @@
                 <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <%=username%>
                 </button>
-                <ul class="dropdown-menu">
-                  <li class="nav-item" ><a class="nav-link bold py-3" href=""   style="color: black; font-weight: 600;">Profile</a>
+                <ul class="dropdown-menu" style="background: #f7f9fa;">
+                  <li class="nav-item" ><a class="nav-link bold py-3 px-3" href=""   style="color: black; font-weight: 600;">Profile</a>
                   </li>
-                  <li class="nav-item"><a class="nav-link py-3" href=""   style="color:black; font-weight: 600;">Leaderboard</a>
+                  <li class="nav-item"><a class="nav-link py-3 px-3" href=""   style="color:black; font-weight: 600;">Leaderboard</a>
                   </li>
-                  <li class="nav-item"><a class="nav-link py-3" href="#"   style="color:black; font-weight: 600;">Log-out</a>
+                  <li class="nav-item"><a class="nav-link py-3 px-3" href="#"   style="color:black; font-weight: 600;">Log-out</a>
                   </li>
-                  <li class="nav-item" ><a class="nav-link bold py-3" href="/aboutUs"   style="color: black; font-weight: 600;">About us</a>
+                  <li class="nav-item" ><a class="nav-link bold py-3 px-3" href="/aboutUs"   style="color: black; font-weight: 600;">About us</a>
                   </li>
-                  <li class="nav-item"><a class="nav-link py-3" href="/contactUs"   style="color:black; font-weight: 600;">Contact Us</a>
+                  <li class="nav-item"><a class="nav-link py-3 px-3" href="/contactUs"   style="color:black; font-weight: 600;">Contact Us</a>
                   </li>
-                  <li class="nav-item"><a class="nav-link py-3" href="#"   style="color:black; font-weight: 600;">FAQs</a>
+                  <li class="nav-item"><a class="nav-link py-3 px-3" href="#"   style="color:black; font-weight: 600;">FAQs</a>
                   </li>
                 </ul>
               </div>
@@ -75,18 +75,19 @@
           <input type="radio" name="topic" value="String">
           <span class="checkmark"></span>
       </label>
+      <label class="container">Stack
+        <input type="radio" name="topic" value="Stack">
+        <span class="checkmark"></span>
+        </label>  
       <label class="container">Linked List
-        <input type="radio" name="topic" value="Linked List">
+        <input type="radio" name="topic" value="linkedList">
         <span class="checkmark"></span>
     </label>
-    <label class="container">Stack
-      <input type="radio" name="topic" value="Stack">
+    <label class="container">Binary Search
+      <input type="radio" name="topic" value="Binary Search">
       <span class="checkmark"></span>
       </label>
-      <label class="container">Queue
-      <input type="radio" name="topic" value="Queue">
-      <span class="checkmark"></span>
-      </label>
+    
       <label class="container">Sorting
       <input type="radio" name="topic" value="Sorting">
       <span class="checkmark"></span>
@@ -111,9 +112,9 @@
             <% questions.forEach((question, index) => { %>
               <tr>
                 <td><%= (currentPage  - 1) * 18 + index + 1 %></td>
-                <td><a href="code_editor" class="link-primary"><%= question.title %></a></td>
+                <td><a href="/questions/<%= question._id %>" class="link-primary"><%= question.title %></a></td>
                 <td><%= question.difficulty %></td>
-                <td><%= question.topic %></td> 
+                <td><%= question.topic %></td>
               </tr>
             <% }); %>
           </tbody>
@@ -173,45 +174,6 @@
 
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- Add Question here -->

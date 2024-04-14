@@ -7,7 +7,8 @@ const compiler = require("compilex");
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static("Public"));
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
 
 // <-- setting the mongodb -->//
 const uri = 'mongodb://localhost:27017/CMZ';
@@ -140,7 +141,7 @@ app.get("/", async function(req, res) {
 app.get("/questions", async (req, res) => {
     const { difficulty, topic } = req.query;
     let query = {};
-    console.log(query);
+    
     const page = parseInt(req.query.page) || 1; // Get the current page from query params, default to 1
     const perPage = 18; // Number of questions per page
     // Build the query based on provided parameters
@@ -151,7 +152,7 @@ app.get("/questions", async (req, res) => {
         query.topic = topic;
     }
     
-    console.log(query);
+    
     try {
         const totalQuestions = await Question.countDocuments();
         const totalPages = Math.ceil(totalQuestions / perPage);
@@ -175,15 +176,30 @@ app.get("/questions", async (req, res) => {
     }
 });
 
+app.get("/questions/:id", async (req, res) => {
 
-
-
-
+    const questionId = req.params.id;
+//   console.log(questionId);
+//   console.log("running");
+    try{
+        const question = await Question.findById(questionId);
+        if(!question){
+            return res.status(404).send("Question not found");
+        }
+    
+        res.render('singleQuestion',{ username: Check.name, questions : question});
+    }
+     catch(err){
+      console.error("Error fetching question: ", err);
+      res.status(500).send('Internal Server Error');
+     }
+});
 
 // <--TO SHOW HOMEPAGE -->
 app.get("/home" , function(req , res){
     res.sendFile(__dirname + "/HomePage.html")
 });
+
 // <--DIRECT TO LOG-IN PAGE-->
 app.post("/log-in.html" , function(req, res){
     res.sendFile(__dirname + "/log-in.html");
