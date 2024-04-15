@@ -103,7 +103,7 @@
         </div>
         <div>
           <!-- <button type="button" class="btn btn-success">Success</button> -->
-          <button id="run" class="btn btn-success">CMZ</button>
+          <button  class="btn btn-success">CMZ</button>
           <button type="button" id="run" class="btn btn-success"><i class="bi bi-play-fill"></i></button>
         </div>
     </div>  
@@ -129,7 +129,7 @@
  
   </body>
   
-   <!-- Your existing script for initializing CodeMirror -->
+   <!-- Your existing scri pt for initializing CodeMirror -->
    <script>
     var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
         mode: "text/x-c++src",
@@ -137,10 +137,13 @@
         lineNumbers: true,
         autoCloseBrackets: true,
     });
-  
+  // Set CodeMirror editor size
     var width = window.innerWidth;
     editor.setSize(0.7 * width, "500");
 
+   var input = document.getElementById("input");
+   var output = document.getElementById("output");
+   var run = document.getElementById("run");
     // Highlighting for each languages.
     var option = document.getElementById("autoSizingSelect");
       option.addEventListener("change",function(){
@@ -155,12 +158,24 @@
       }
       });
 
-
-
-
-
-
-
+      // Run code button functionality
+     var code;
+     run.addEventListener("click", async function(){
+      console.log("Run button clicked");
+     code = { code:editor.getValue(),
+       input:input.value,
+       lang:option.value
+     }
+      var oData= await fetch("http://localhost:3001/questions/<%=questions._id%>/compile",{
+        method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(code)
+          });
+          let d = await oData.json();
+          output.value = d.output;
+        })
 </script>
 </html>
 

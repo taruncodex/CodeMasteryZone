@@ -7,8 +7,12 @@ const compiler = require("compilex");
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
+// compiler addition 
+const options = {stats:true};
+compiler.init(options);  //init() creates a folder named temp in your project directory which is used for storage purpose. Before using other methods , make sure to call init() method.
 
 // <-- setting the mongodb -->//
 const uri = 'mongodb://localhost:27017/CMZ';
@@ -177,7 +181,9 @@ app.get("/questions", async (req, res) => {
 });
 
 app.get("/questions/:id", async (req, res) => {
-
+compiler.flush(function(){
+    console.log("temp files deleted")
+})
     const questionId = req.params.id;
 //   console.log(questionId);
 //   console.log("running");
@@ -194,6 +200,92 @@ app.get("/questions/:id", async (req, res) => {
       res.status(500).send('Internal Server Error');
      }
 });
+
+// cmpiler post 
+app.post("/questions/:id/compile",function(req,res){
+    var code = req.body.code;
+    var input = req.body.input;
+    var lang = req.body.lang;
+   console.log(" i am inside the compile");
+      try{ console.log(" i am inside the try and catch");
+          if(lang == "C++"){console.log(" i am inside the cpp");
+              if(!input){console.log(" i am inside the if");
+                  var  envdata = {OS:"windows",cmd:"g++",options:{timeout:10000}};
+                  compiler.compileCPP(envdata,code,function(data){
+                    if(data.output)
+                      {res.send(data);}
+                    else{
+                    console.log(" i am inside else");
+                      res.end({output:"error"});}
+                  });
+              }
+              else{
+                  let envData = {OS:"windows",cmd:"g++",options:{timeout:10000}};
+                  compiler.compileCPPWithInput(envData,code,input,function(data){
+                    if(data.output)
+                      res.send(data);
+                    else
+                      res.end({output:"error"});
+                  });
+              }
+          }
+          else if(lang == "Java"){
+              if(!input){
+                  let envData = {OS:"windows"};
+                  compiler.compileJava(envData,code,function(data){
+                   if(data.output)
+                      res.send(data);
+                    else
+                      res.end({output:"error"});
+                  });
+              }
+              else{
+                  let envData = {OS:"windows"};
+                  compiler.compileJavaWithInput(envData,code,input,function(data){
+                    if(data.output)
+                      res.send(data);
+                    else
+                      res.end({output:"error"});
+                  });
+              }
+          }
+          else if(lang == "Python"){
+              if(!input){
+                  let envData = {OS:"windows"};
+                  compiler.compilePython(envData,code,function(data){
+                      if(data.output)
+                        res.send(data);
+                      else
+                        res.end({output:"error"});
+                  });
+              }
+              else{
+                  let envData = {OS:"windows"};
+                  compiler.compilePythonWithInput(envData,code,input,function(data){
+                      if(data.output)
+                       res.send(data);
+                      else
+                       res.end({output:"error"});
+                  });
+              }
+          }
+      }
+      catch(e){
+          console.log("Error");
+      }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
 
 // <--TO SHOW HOMEPAGE -->
 app.get("/home" , function(req , res){
