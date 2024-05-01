@@ -69,6 +69,8 @@ pre {
     border-radius: 3px;
     height:fit-content;
     width: fit-content;
+    font-family:"Nunito", sans-serif;
+    font-optical-sizing: auto;
 }
 
 

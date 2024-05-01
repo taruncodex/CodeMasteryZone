@@ -125,6 +125,8 @@
             transform: translate(-50%, -50%);
             z-index: 1;
         }
+        .relative{
+        }
     </style>
 
 </head>
@@ -143,11 +145,30 @@
           </button>
           <div  class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
          
-              <!-- Login form -->
-              <div class="dropdown pt-2">
+        
+            <div class="relative">
+                <button class="flex items-center focus:outline-none"   id="headlessui-menu-button-:r1e:" type="button" aria-haspopup="menu" aria-expanded="false" data-headlessui-state="" fdprocessedid="il6g3n">
+                    <span id="navbar_user_avatar" class="relative ml-1 h-6 w-6 " >
+                        <img style="border-radius: 50%; height: 2.5em; width: 2.5em;" src="https://assets.leetcode.com/users/default_avatar.jpg" alt="avatar" class="h-full w-full rounded-full object-cover">
+                    </span>
+                </button>
+            </div>
+
+
+
+
+
+
+
+
+            
+              <div class="dropdown pt-2 d-flex ">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <%=userName%>
                 </button>
+                <a href="#" class="my-3s px-3 link-body-emphasis text-decoration-none" >
+                    <img src="https://github.com/mdo.png" alt="mdo" width="45" height="45" class="rounded-circle ">
+                  </a>
                 <ul class="dropdown-menu">
                   <li class="nav-item" >
                     <a class="nav-link bold py-3" href=""   style="color: black; font-weight: 600;">Profile</a>

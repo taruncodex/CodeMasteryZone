@@ -64,8 +64,18 @@ form {
 
 }
 
-input[type="text"],
-input[type="password"] {
+input[type="email"]{
+  padding: 10px;
+  border: 2px solid white;
+  width: 100%;
+  border-radius: 25px;
+  outline: none;
+  background-color: transparent;
+  color: white;
+
+}
+input[type="password"] 
+{
   padding: 10px;
   border: 2px solid white;
   width: 100%;
@@ -127,7 +137,7 @@ button{
   cursor:pointer;
 }
 input:valid+label,
-input:focus+label{
+input:focus+label{ 
 background-color: white;
 color: black;
 transform: translate(10px, -20px);

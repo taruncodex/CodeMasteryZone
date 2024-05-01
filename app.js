@@ -15,7 +15,7 @@ const options = {stats:true};
 compiler.init(options);  //init() creates a folder named temp in your project directory which is used for storage purpose. Before using other methods , make sure to call init() method.
 
 // <-- setting the mongodb -->//
-const uri = 'mongodb://localhost:27017/CMZ';
+const uri = 'mongodb+srv://tarunrathore200:tarun2004@cluster0.kwuaivf.mongodb.net/CMZ';
 mongoose.connect(uri);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console,'MongoDB connection error:'));
@@ -54,6 +54,8 @@ const loginSchema =  new mongoose.Schema({
      }
  });
 
+
+  
    // <-- Defing the Question Scema -->
    const questionSchema = new mongoose.Schema({
     _id: Number,
@@ -62,7 +64,12 @@ const loginSchema =  new mongoose.Schema({
     topic: String,
     description: String,
     Input: mongoose.Schema.Types.Mixed, // Can be a string or array of strings
-    Output: mongoose.Schema.Types.Mixed
+    Output: mongoose.Schema.Types.Mixed,
+    notePoint: String,
+    testCases: [{
+        input: [mongoose.Schema.Types.Mixed], // Input can be of any type
+        output: [mongoose.Schema.Types.Mixed] // Output can be of any type
+    }]
   });
 
 
@@ -194,6 +201,7 @@ compiler.flush(function(){
         }
     
         res.render('singleQuestion',{ username: Check.name, questions : question});
+
     }
      catch(err){
       console.error("Error fetching question: ", err);
@@ -212,6 +220,7 @@ app.post("/questions/:id/compile",function(req,res){
               if(!input){console.log(" i am inside the if");
                   var  envdata = {OS:"windows",cmd:"g++",options:{timeout:10000}};
                   compiler.compileCPP(envdata,code,function(data){
+                    console.log(data.output);
                     if(data.output)
                       {res.send(data);}
                     else{
@@ -220,8 +229,10 @@ app.post("/questions/:id/compile",function(req,res){
                   });
               }
               else{
+                console.log("i am inside else , when input exists");
                   let envData = {OS:"windows",cmd:"g++",options:{timeout:10000}};
                   compiler.compileCPPWithInput(envData,code,input,function(data){
+                    console.log(data.output);
                     if(data.output)
                       res.send(data);
                     else
@@ -233,6 +244,7 @@ app.post("/questions/:id/compile",function(req,res){
               if(!input){
                   let envData = {OS:"windows"};
                   compiler.compileJava(envData,code,function(data){
+                    
                    if(data.output)
                       res.send(data);
                     else
@@ -274,6 +286,184 @@ app.post("/questions/:id/compile",function(req,res){
           console.log("Error");
       }
   });
+
+  // To run testcases and verify the user's code.
+  app.post("/questions/:id/check", async function(req, res) {
+    var code = req.body.code;
+    var input = req.body.input;
+    var lang = req.body.lang;
+   console.log(" i am inside the compile");
+      try{ console.log(" i am inside the try and catch");
+          if(lang == "C++"){console.log(" i am inside the cpp");
+              if(!input){console.log(" i am inside the if");
+                  var  envdata = {OS:"windows",cmd:"g++",options:{timeout:10000}};
+                  compiler.compileCPP(envdata,code,function(data){
+                    console.log(data.output);
+                    if(data.output)
+                      {res.send(data);}
+                    else{
+                    console.log(" i am inside else");
+                      res.end({output:"error"});}
+                  });
+              }
+              else{
+                console.log("i am inside else , when input exists");
+                  let envData = {OS:"windows",cmd:"g++",options:{timeout:10000}};
+                  compiler.compileCPPWithInput(envData,code,input,function(data){
+                    console.log(data.output);
+                    if(data.output)
+                      res.send(data);
+                    else
+                      res.end({output:"error"});
+                  });
+              }
+          }
+          else if(lang == "Java"){
+              if(!input){
+                  let envData = {OS:"windows"};
+                  compiler.compileJava(envData,code,function(data){
+                    
+                   if(data.output)
+                      res.send(data);
+                    else
+                      res.end({output:"error"});
+                  });
+              }
+              else{
+                  let envData = {OS:"windows"};
+                  compiler.compileJavaWithInput(envData,code,input,function(data){
+                    if(data.output)
+                      res.send(data);
+                    else
+                      res.end({output:"error"});
+                  });
+              }
+          }
+          else if(lang == "Python"){
+              if(!input){
+                  let envData = {OS:"windows"};
+                  compiler.compilePython(envData,code,function(data){
+                      if(data.output)
+                        res.send(data);
+                      else
+                        res.end({output:"error"});
+                  });
+              }
+              else{
+                  let envData = {OS:"windows"};
+                  compiler.compilePythonWithInput(envData,code,input,function(data){
+                      if(data.output)
+                       res.send(data);
+                      else
+                       res.end({output:"error"});
+                  });
+              }
+          }
+      }
+      catch(e){
+          console.log("Error");
+      }
+  
+
+
+});
+  
+
+
+
+// app.post("/questions/:id/check", async function(req, res) {
+    
+//         var code = req.body.code;
+//         var input = req.body.input;
+//         var lang = req.body.lang;
+//         console.log("i am inside the compile2");
+ 
+//         // Retrieve the predefined input from MongoDB based on the :id parameter
+//         let question = await Question.findById(req.params.id);
+//         if (!question) {
+//             return res.status(500).send({ error: "Question not found" });
+//         }
+ 
+//         // Check if the user's input matches the predefined input
+//         if (input === question.testCases[0].input) {
+//             try {
+//                 console.log("i am inside the try and catch2");
+//                 if (lang == "C++") {
+//                     console.log("i am inside the cpp2");
+//                     if (!input) {
+//                         var envdata = { OS: "windows", cmd: "g++", options: { timeout: 10000 } };
+//                         compiler.compileCPP(envdata, code, function(data) {
+//                             console.log(data.output);
+//                             if (data.output) {
+//                                 res.send(data);
+//                             } else {
+//                                 console.log("i am inside else2");
+//                                 res.end({ output: "error" });
+//                             }
+//                         });
+//                     } else {
+//                         console.log("i am inside else, when input exists2");
+//                         let envData = { OS: "windows", cmd: "g++", options: { timeout: 10000 } };
+//                         compiler.compileCPPWithInput(envData, code, input, function(data) {
+//                             console.log(data.output);
+//                             if (data.output) {
+//                                 res.send(data);
+//                             } else {
+//                                 res.end({ output: "error" });
+//                             }
+//                         });
+//                     }
+//                 } else if (lang == "Java") {
+//                     if (!input) {
+//                         let envData = { OS: "windows" };
+//                         compiler.compileJava(envData, code, function(data) {
+//                             if (data.output) {
+//                                 res.send(data);
+//                             } else {
+//                                 res.end({ output: "error" });
+//                             }
+//                         });
+//                     } else {
+//                         let envData = { OS: "windows" };
+//                         compiler.compileJavaWithInput(envData, code, input, function(data) {
+//                             if (data.output) {
+//                                 res.send(data);
+//                             } else {
+//                                 res.end({ output: "error" });
+//                             }
+//                         });
+//                     }
+//                 } else if (lang == "Python") {
+//                     if (!input) {
+//                         let envData = { OS: "windows" };
+//                         compiler.compilePython(envData, code, function(data) {
+//                             if (data.output) {
+//                                 res.send(data);
+//                             } else {
+//                                 res.end({ output: "error" });
+//                             }
+//                         });
+//                     } else {
+//                         let envData = { OS: "windows" };
+//                         compiler.compilePythonWithInput(envData, code, input, function(data) {
+//                             if (data.output) {
+//                                 res.send(data);
+//                             } else {
+//                                 res.end({ output: "error" });
+//                             }
+//                         });
+//                     }
+//                 }
+//             } catch (e) {
+//                 console.log("Error");
+//             }
+//         } else {
+//             // User's input does not match predefined input
+//             return res.status(400).send({ error: "Wrong input" });
+//         }
+//     } 
+//  );
+ 
 
 
 
@@ -360,3 +550,4 @@ app.listen( 3001 , function (){
 //         res.send("<h1> Wrong Details </h1>");
 //     }
 //     }); 
+

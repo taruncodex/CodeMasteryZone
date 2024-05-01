@@ -1,0 +1,99 @@
+[{
+  "_id": {
+    "$oid": "65fbb43d789a207041e1280f"
+  },
+  "name": "Tarun Rathore",
+  "email": "tarunrathore200@gmail.com",
+  "password": "532004Tarun:)",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65fbbe14ce70421910991544"
+  },
+  "name": "Trapti Rathore",
+  "email": "traptirathore123@gmail.com",
+  "password": "1432002Trapti:)",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65fbbe87cb9f31cef6495069"
+  },
+  "name": "Rishabh Gangwar",
+  "email": "rishugangwar0304@gmail.com",
+  "password": "anshika",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65fd4764b905ef04246cce94"
+  },
+  "name": "Sugam ",
+  "email": "sugam123@gmail.com",
+  "password": "sssss",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ffb1b08a1b1e5ae944602c"
+  },
+  "name": "Priyanshi Sahu",
+  "email": "priyanshi123@gmail.com",
+  "password": "167203Priyanshi:)",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660feeeba4902e9412927dd3"
+  },
+  "name": "rajveer",
+  "email": "rajveer123@gmaol.com",
+  "password": "11111",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "661809fe97e1d7e2cdd61f59"
+  },
+  "name": "Aditi Sahu",
+  "email": "aditidahu123@gmail.com",
+  "password": "532004Tarun:)",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6618b53af7aef8b8bfd1d731"
+  },
+  "name": "sdjfksdjfhkh",
+  "email": "dfjskjhfksd@fskfksh",
+  "password": "ddfsdfsdjf",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6618b677f7aef8b8bfd1d73a"
+  },
+  "name": "Anisha Gangwar",
+  "email": "anisha123@gmail.com",
+  "password": "11111",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66235c755736a9005c559125"
+  },
+  "name": "Aniket",
+  "email": "Aniket200@gmail.com",
+  "password": "12345",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662491a7830ece3692a4196f"
+  },
+  "name": "knln",
+  "email": "learn.kar0989@gmail",
+  "password": "1234567890",
+  "__v": 0
+}]
