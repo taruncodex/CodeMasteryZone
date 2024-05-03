@@ -137,6 +137,7 @@ app.get("/", async function(req, res) {
         // Render the try.ejs file with the necessary variables
         res.render('try', {
             username: Check.name, // Pass the username here
+            email: Check.email,
             questions: questions,
             totalPages: totalPages,
             currentPage: page
@@ -174,6 +175,7 @@ app.get("/questions", async (req, res) => {
         
         res.render('try', {
             username: Check.name, // Pass the username here
+            email: Check.email,
             questions: questions1,
             totalPages: totalPages,
             currentPage: page

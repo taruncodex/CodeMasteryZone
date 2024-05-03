@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Practice Questions</title>
+    <title>Practice Question Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-     <!-- <link rel="stylesheet" href="question.css">  -->
+    <!-- <link rel="stylesheet" href="question.css"> -->
     <style>
       *{
         padding: 0px;
@@ -106,22 +106,16 @@
         display: inline-block;
         padding: 5vh 50px;
         width: 280px; 
-        height: calc(100vh - 50px);
-        position: fixed;
-        margin-top: 50px;
+        height: calc(100% - 50px);
       }
       #quesTable{
-           width: calc(100vw - 280px);
+           width: calc(100% - 280px);
            float: right;
-           margin-top: 50px;
       }
       nav{
-        background-color: #333;
-        color: #fff;
+        background-color: black;
+        color: white;
         padding-left: 20px;
-        position: fixed;
-        top: 0px;
-        left: 0px;
         height: 50px;
         width: 100%;
       }
@@ -129,10 +123,11 @@
   </head>
   <body>
       <nav>
-        <h2>CodeMysteryZone</h2>
+       <h2>CodeMysteryZone</h2>
 
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="float: right; margin-top: -40px; margin-right: 10px;">
-          <%=username%>
+        <button class="btn btn-primary mx-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="float: right; margin-top: -43px; margin-right: 10px; font-size: 20px; border-radius: 50%;">
+           <%=username[0]%>
+           
         </button>
         
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
@@ -141,7 +136,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <h3>Keshav Singh</h3>
+            <label for="name">User:</label>
+            <span><%=username%></span>
+            <label for="email">Email:</label>
+            <span><%=email%></span>
           </div>
         </div>
 
@@ -150,8 +148,8 @@
     <div id="filter"> 
         <h3>DIFFICULTY</h3>
         <label class="container">Easy
-           <input type="radio" name="difficulty" value="Easy">
-           <span class="checkmark"></span>
+        <input type="radio" name="difficulty" value="Easy">
+        <span class="checkmark"></span>
         </label>
         <label class="container">Medium
         <input type="radio" name="difficulty" value="Medium">
@@ -161,25 +159,24 @@
         <input type="radio" name="difficulty" value="Hard">
         <span class="checkmark"></span>
         </label>
-        <br> <br>
-
-        <!-- Parameters for Topics -->
+        <br>
+        <br>
         <h3>TOPICS</h3>
         <label class="container">Array
-            <input type="radio" name="topic" value="Array">
-            <span class="checkmark"></span>
+        <input type="radio" name="topic" value="Array">
+        <span class="checkmark"></span>
         </label>
         <label class="container">String
-            <input type="radio" name="topic" value="String">
-            <span class="checkmark"></span>
+        <input type="radio" name="topic" value="String">
+        <span class="checkmark"></span>
         </label>
         <label class="container">Linked List
-            <input type="radio" name="topic" value="linkedList">
-            <span class="checkmark"></span>
+        <input type="radio" name="topic" value="linkedList">
+        <span class="checkmark"></span>
         </label>
         <label class="container">Stack
-            <input type="radio" name="topic" value="Stack">
-            <span class="checkmark"></span>
+        <input type="radio" name="topic" value="Stack">
+        <span class="checkmark"></span>
         </label>
         <label class="container">Binary Search
         <input type="radio" name="topic" value="Binary Search">
@@ -199,17 +196,17 @@
                 <th style="width: 1vw;">S.N.</th>
                 <th>Title</th>
                 <th id="difficulty" style="width: 7vw; ">Difficulty</th>
-                <th id="topic" style="width: 7vw; ">Topic</th> 
-                <th id="status" style="width: 7vw; ">Status</th> 
+                <th id="topic" style="width: 12vw; ">Topic</th> 
             </tr>
           </thead>
+
           <tbody>
             <% questions.forEach((question, index) => { %>
               <tr>
                 <td><%= (currentPage  - 1) * 18 + index + 1 %></td>
-                <td><a href="/questions/<%= question._id %>" style="text-decoration: none; " class="link-primary"><%= question.title %></a></td>
-                <td><%= question.difficulty %></td>
-                <td><%= question.topic %></td>
+                <td><a href="/questions/<%= question._id %>" style="text-decoration: none; color: black;"><%= question.title %></a></td>
+                <td style="text-align: center;"><%= question.difficulty %></td>
+                <td style="text-align: center;"><%= question.topic %></td>
               </tr>
             <% }); %>
           </tbody>
@@ -217,8 +214,8 @@
      </div>
   
 
-     // Pagination 
-   <nav aria-label="Page navigation example" >
+  <!-- Pagination -->
+   <div aria-label="Page navigation example" style="position: absolute; bottom: 50px; left: 20px;">
     <ul class="pagination">
       <% if (currentPage > 1) { %>
         <li class="page-item"><a class="page-link" href="/?page=1">First</a></li>
@@ -234,7 +231,7 @@
         <li class="page-item"><a class="page-link" href="/?page=<%= totalPages %>">Last</a></li>
       <% } %>
     </ul>
-  </nav> 
+  </div>
 
    <!-- Bootstrap script -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
