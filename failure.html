@@ -10,8 +10,26 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
-    background-color: aliceblue;
+   
+}
+
+
+.gradient-background2 {
+  background: linear-gradient(300deg, #15ebb6 , #102ff8,  #0effe3 );
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .container {
@@ -66,7 +84,7 @@ img{
 }
     </style>
 </head>
-<body>
+<body class="gradient-background2">
     <div class="container">
         <a href="#"><img src="image/2.png" alt="cmz logo" style="width: 80px;height: 80px;"></a>
         <form action="/signup.html" method="post">

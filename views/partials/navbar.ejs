@@ -1,0 +1,77 @@
+  
+
+
+    <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg" style="background-color: #9cd2e4;">
+  <div class="container-fluid">
+    <a class="navbar-brand px-4" href="/home" style="font-weight: 700; font-size: 1.7rem;">CodeMasteryZone</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+   
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <button class="btn btn-primary mx-3 " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="profile_icon">
+        <%=  email[0].toUpperCase()   %>
+      </button>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link py-3" href="/aboutUs" style="color: black; font-weight: 600;">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link py-3" href="/contactUs" style="color:black; font-weight: 600;">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link py-3" href="#" style="color:black; font-weight: 600;">FAQs</a>
+        </li>         
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- profile icon functionality -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header py-2" id="profile_header">
+    <h5 class="offcanvas-title " id="offcanvasExampleLabel">Profile</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" id="profile_body">
+    <div style="text-align: center;">
+      <div style="height:200px; width:200px; border-radius: 50%; border: 1px solid black; margin-left: 22%;">
+        <img src="<%=profile_pic%>" alt="Profile" height="200px" width="200px" style="border-radius: 50%;">
+      </div>
+      <br>
+      <p style="font-size: larger;"><%=about%></p>
+    </div>
+    <table>
+      <tr>
+        <td class="first_col bg-primary-subtle">Username</td>
+        <td class="bg-primary-subtle"><%=userName%></td>
+      </tr>
+      <tr>
+        <td class="first_col bg-warning-subtle">Name</td>
+        <td class="bg-warning-subtle"><%=first%> <%=last%></td>
+      </tr>
+      <tr>
+        <td class="first_col bg-primary-subtle">Email</td>
+        <td class="bg-primary-subtle"><%=email%></td>
+      </tr>
+      <tr>
+        <td class="first_col bg-warning-subtle">Contact_No</td>
+        <td class="bg-warning-subtle"><%=contact%></td>
+      </tr>
+      <tr>
+        <td class="first_col bg-primary-subtle">Address</td>
+        <td class="bg-primary-subtle"><%=address%></td>
+      </tr>
+      <tr>
+        <td class="first_col bg-warning-subtle ">City</td>
+        <td class="bg-warning-subtle"><%=city%></td>
+      </tr>
+      <tr>
+        <td class="first_col bg-primary-subtle">Country</td>
+        <td class="bg-primary-subtle"><%=country%></td>
+      </tr>
+    </table>
+    <a href=""> <button class="btn btn-dark"> Edit Profile  </button></a>
+  </div>
+</div>

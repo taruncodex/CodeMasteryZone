@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+   <style>
+      *{
+    padding: 0%;
+    margin: 0%;
+}
+body{
+    background: linear-gradient(300deg, #15ebb6 , #102ff8,  #0effe3 );
+    /* background-size: 180% 180%; */
+    animation: gradient-animation 18s ease infinite;  
+    height: 100vh;
+    width: 100vw;  
+}
+
+@keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+#container{
+    background-color: #7AA2E3;
+    border: 2px solid black;
+    position: relative;
+    top: 20px;
+    left: 15vw;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    height: 90vh;
+    overflow: auto;
+}
+
+#user_info{
+    display: grid;
+    padding: 10px 0px 10px 50px;
+    grid-template-columns: 10vw 10vw;
+    grid-template-rows: auto auto;
+    grid-row-gap: 20px;
+    grid-column-gap: 13vw;
+}
+
+#contact_info{
+    display: grid;
+    padding: 10px 0px 10px 50px;
+    grid-template-columns: 10vw 10vw;
+    grid-template-rows: auto auto;
+    grid-row-gap: 20px;
+    grid-column-gap: 13vw;
+}
+
+#about_me{
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+input{
+    width: 15vw;
+    height: 3.5vh;
+}
+
+input,textarea{
+    background-color: #9BB0C1;
+    font-size: large;
+}
+
+#save{
+    background-color: #41B06E;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: large;
+    position: relative;
+    bottom: -20px;
+    left: -50px;
+    padding: 10px 20px;
+}
+
+#skip{
+    background-color: #5755FE;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: large;
+    position: absolute;
+    bottom: -30px;
+    right: -50px;
+    padding: 10px 20px;
+}
+
+#save:hover{
+    background-color: #74E291;
+    transform: scale(1.05,1.05);
+}
+
+#skip:hover{
+    background-color: #8576FF;
+    transform: scale(1.05,1.05);
+}
+
+#details{
+    position: absolute;
+    left: 300px;
+}
+
+#img_container{
+    width: 200px;
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    overflow: hidden;
+    
+}
+
+#img{
+    background-color: #9BB0C1;
+    width: 200px;
+    height: 200px;
+}
+a{
+   text-decoration: none;
+   color: black;
+}
+   </style>
+
+</head>
+<body>
+   <div id="container">
+     <h2 style="background: #91d4ea; padding: 10px 30px; font-weight: 700; font-size: 30px;">My Profile</h2>
+     <form action="/submit" method="post">
+      <div id="details">
+        <h2 style="padding: 10px 10px 0px 10px;">User Information</h2>
+        <div id="user_info">
+          <div>
+            <h3>Username</h3>
+            <input type="text" name="username" value="<%=userName%>">
+          </div>
+          <div>
+            <h3>Email Address</h3>
+            <input type="email" name="mail" value="<%=useremail%>" > 
+          </div>
+          <div>
+            <h3>First Name</h3>
+            <input type="text" name="first_name" value="">
+          </div>
+          <div>
+            <h3>Last Name</h3>
+            <input type="text" name="last_name" value="">
+          </div>
+        </div>
+         
+        <h2 style="padding: 10px 10px 0px 10px;">Contact Information</h2>
+        <div id="contact_info">
+            <div>
+               <h3>Address</h3>
+               <input type="text" name="address" value="">
+            </div>
+            <div>
+               <h3>Contact Number</h3>
+               <input type="tel" name="contact_no" > 
+            </div>
+            <div>
+                <h3>City</h3>
+                <input type="text" name="city" value=""> 
+             </div>
+             <div>
+                <h3>Country</h3>
+                <input type="text" name="country" value=""> 
+             </div>
+        </div>
+
+        <h2 style="padding: 10px 10px 0px 10px;">About Me</h2>
+        <div id="about_me">
+            <h3>About Me</h3>
+            <textarea name="about_me" value="" cols="60" rows="5"></textarea>
+        </div> 
+
+         <!-- <a href="/prfile" id="save">Update</a> -->
+         <button type="submit" id="save">Submit</button> 
+          <a id="skip" href="/">Skip</a>
+         
+      </div>
+     <div id="img_container">
+        <div id="img">
+          <img src="/Public/image/default profile.png" id="profile" alt="Profile" height="200px" width="200px" style="border-radius: 8px;">
+        </div>
+       <input type="file" name="profile" accept="image/*" onchange="picture(event)">
+     </div>
+    </form>
+   </div>
+   
+
+   <script>
+    function picture(){
+
+     var input = event.target;
+     var reader = new FileReader();
+
+     reader.onload = function(){
+     var profile = document.getElementById('profile');
+     profile.src = reader.result;
+     };
+
+     reader.readAsDataURL(input.files[0]);
+    }
+   </script>
+</body>
+</html>

@@ -2,6 +2,9 @@ const express =  require ("express");
 const bodyParser = require ("body-parser");
 const mongoose = require('mongoose');
 const compiler = require("compilex");
+const validator = require("validator");
+const multer = require('multer');
+
 // const compilerApi = require('./api');
 
 const app = express();
@@ -13,9 +16,10 @@ app.use(express.static('public'));
 // compiler addition 
 const options = {stats:true};
 compiler.init(options);  //init() creates a folder named temp in your project directory which is used for storage purpose. Before using other methods , make sure to call init() method.
+const upload = multer({ dest: 'uploads/' }); 
 
 // <-- setting the mongodb -->//
-const uri = 'mongodb+srv://tarunrathore200:tarun2004@cluster0.kwuaivf.mongodb.net/CMZ';
+const uri = 'mongodb://localhost:27017/CMZ';
 mongoose.connect(uri);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console,'MongoDB connection error:'));
@@ -23,23 +27,36 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-let Check = {};
+
 // <-- Defing the User Scema -->
 const UserSchema =  new mongoose.Schema({
-    name: {
+    userName: {
         type: String,
         required: [true , "name is required"]
       },
       email: {
         type: String,
         required: true,
-        //unique: true// Ensures uniqueness
+        unique: true,  // Ensures uniqueness
+        // Validate(value){
+        //   if(!validator.isEmail(value)){
+        //     throw new Error("Email is invalid");
+        //   }  
+        // }
       } ,
      password: {
         type: String,
         required: [true, "Password is required"]
-     }
- });
+     },
+     profile_pic:String,
+     first:String,
+     last:String,
+     address:String,
+     contact:Number,
+     city:String,
+     country:String,
+     about:String
+});
  
  // <-- Defing the loginUser Scema -->
 const loginSchema =  new mongoose.Schema({
@@ -47,15 +64,13 @@ const loginSchema =  new mongoose.Schema({
         type: String,
         required: true,
         //unique: true// Ensures uniqueness
-      } ,
+      } , 
      password: {
         type: String,
         required: [true, "Password is required"]
      }
  });
 
-
-  
    // <-- Defing the Question Scema -->
    const questionSchema = new mongoose.Schema({
     _id: Number,
@@ -65,12 +80,10 @@ const loginSchema =  new mongoose.Schema({
     description: String,
     Input: mongoose.Schema.Types.Mixed, // Can be a string or array of strings
     Output: mongoose.Schema.Types.Mixed,
-    notePoint: String,
-    testCases: [{
-        input: [mongoose.Schema.Types.Mixed], // Input can be of any type
-        output: [mongoose.Schema.Types.Mixed] // Output can be of any type
-    }]
+    Input2: mongoose.Schema.Types.Mixed, 
+    Output2: mongoose.Schema.Types.Mixed
   });
+
 
 
 //Creating the mongoose Model for User Sign-up
@@ -81,20 +94,19 @@ const Loginuser = mongoose.model('loginuser', loginSchema);
 const Question = mongoose.model('Question', questionSchema  );
 
 
-//Route to handle form submission.  
 app.post('/signup', async function (req, res) {
-    const { name, email, password } = req.body; // Destructure the request body
-
+    const { username, mail, password } = req.body; // Destructure the request body
+        
     //Check if the email already exists
-    const existingUser = await Cmzuser.findOne({ email: email });
+    const existingUser = await Cmzuser.findOne({ email: mail });
     if (existingUser) {
         res.sendFile(__dirname + "/failure.html");
         
     } else {
         //If email is unique, create a new User instance and save the user's information into the database
         const newUser = new Cmzuser({
-            name: name, 
-            email: email,
+            userName: username, 
+            email: mail,
             password: password
         });
         newUser.save();
@@ -104,28 +116,57 @@ app.post('/signup', async function (req, res) {
 });
 
 // <-- Log-in Logic -->
+let Check = {};
 app.post("/login", async function(req,res){
 
 const {mail , password2 } = req.body;
 
  Check = await Cmzuser.findOne({ email: mail });
+
 if(Check.password === password2){
-    try {
-        const questions = await Question.find(); // Fetch all questions
-        res.redirect("/")// Pass questions to the template
-      } catch (err) {
-        console.error('Error fetching questions:', err);
-        res.status(500).send('Internal Server Error');
-      }
+    res.render('profile', {userName: Check.userName,useremail : Check.email});
 }else{
     res.send("<h1> Wrong Details </h1>");
 }
 }); 
 
 
+app.post("/submit", async (req, res) => {
+    const { profile, username, mail, first_name, last_name, address, contact_no, city, country, about_me } = req.body;
+
+    try {
+        const imgBase64 = profile.toString('base64');
+        // Update user profile information
+      const resu = await Cmzuser.updateOne({email: Check.email},
+     {
+      $set:{
+            profile_pic: imgBase64, // Assuming you want to store the image as base64 string
+            userName: username,
+            email:mail,
+            first: first_name,
+            last: last_name,
+            address: address,
+            contact: contact_no,
+            city: city,
+            country: country,
+            about: about_me
+          } 
+        });
+        console.log(resu);
+        // Redirect to appropriate page upon successful submission
+        res.redirect("/"); // Redirect to home page or any other page as needed
+    } catch (error) {
+        console.error("Error updating user profile:", error);
+        res.status(500).send(error.message); // Send error message to client
+    }
+
+    Check = await Cmzuser.findOne({ email: mail });
+});
+
+
 app.get("/", async function(req, res) {
     const page = parseInt(req.query.page) || 1; // Get the current page from query params, default to 1
-    const perPage = 18; // Number of questions per page
+    const perPage = 14; // Number of questions per page
     try {
         const totalQuestions = await Question.countDocuments();
         const totalPages = Math.ceil(totalQuestions / perPage);
@@ -134,13 +175,28 @@ app.get("/", async function(req, res) {
             .skip((page - 1) * perPage) // Skip the correct number of documents
             .limit(perPage); // Limit the number of documents
 
+        // console.log(Check.profile_pic);
+
+        // const retrievedImageData = await Buffer.from(Check.profile_pic, 'base64');
+         
+        // console.log(retrievedImageData);
+
         // Render the try.ejs file with the necessary variables
         res.render('try', {
-            username: Check.name, // Pass the username here
-            email: Check.email,
             questions: questions,
             totalPages: totalPages,
-            currentPage: page
+            currentPage: page,
+            profile_pic: Check.profile_pic, 
+            userName: Check.userName,
+            email:Check.email,
+            first: Check.first,
+            last: Check.last,
+            address: Check.address,
+            contact: Check.contact,
+            city: Check.city,
+            country: Check.country,
+            about: Check.about
+
         });
     } catch (err) {
         console.error('Error fetching questions:', err);
@@ -155,7 +211,7 @@ app.get("/questions", async (req, res) => {
     let query = {};
     
     const page = parseInt(req.query.page) || 1; // Get the current page from query params, default to 1
-    const perPage = 18; // Number of questions per page
+    const perPage = 14; // Number of questions per page
     // Build the query based on provided parameters
     if (difficulty) {
         query.difficulty = difficulty;
@@ -174,11 +230,19 @@ app.get("/questions", async (req, res) => {
             .limit(perPage); // Limit the number of documents
         
         res.render('try', {
-            username: Check.name, // Pass the username here
-            email: Check.email,
-            questions: questions1,
-            totalPages: totalPages,
-            currentPage: page
+            questions:    questions1,
+            totalPages:   totalPages,
+            currentPage:  page,
+            profile_pic:  Check.profile_pic, 
+            userName:     Check.userName,
+            email:        Check.email,
+            first:        Check.first,
+            last :        Check.last,
+            address:      Check.address,
+            contact:      Check.contact,
+            city:         Check.city,
+            country:      Check.country,
+            about:        Check.about
         });
         
 
@@ -189,6 +253,8 @@ app.get("/questions", async (req, res) => {
     }
 });
 
+  let question;
+
 app.get("/questions/:id", async (req, res) => {
 compiler.flush(function(){
     console.log("temp files deleted")
@@ -197,13 +263,24 @@ compiler.flush(function(){
 //   console.log(questionId);
 //   console.log("running");
     try{
-        const question = await Question.findById(questionId);
+        question = await Question.findById(questionId);
         if(!question){
             return res.status(404).send("Question not found");
         }
-    
-        res.render('singleQuestion',{ username: Check.name, questions : question});
-
+        res.render('singleQuestion',{
+            questions   :   question,
+            profile_pic :   Check.profile_pic, 
+            userName    :   Check.userName,
+            email       :   Check.email,
+            first       :   Check.first,
+            last        :   Check.last,
+            address     :   Check.address,
+            contact     :   Check.contact,
+            city        :   Check.city,
+            country     :   Check.country,
+            about       :   Check.about 
+            
+            });
     }
      catch(err){
       console.error("Error fetching question: ", err);
@@ -222,7 +299,7 @@ app.post("/questions/:id/compile",function(req,res){
               if(!input){console.log(" i am inside the if");
                   var  envdata = {OS:"windows",cmd:"g++",options:{timeout:10000}};
                   compiler.compileCPP(envdata,code,function(data){
-                    console.log(data.output);
+                   
                     if(data.output)
                       {res.send(data);}
                     else{
@@ -231,10 +308,9 @@ app.post("/questions/:id/compile",function(req,res){
                   });
               }
               else{
-                console.log("i am inside else , when input exists");
                   let envData = {OS:"windows",cmd:"g++",options:{timeout:10000}};
                   compiler.compileCPPWithInput(envData,code,input,function(data){
-                    console.log(data.output);
+                    console.log(data);
                     if(data.output)
                       res.send(data);
                     else
@@ -289,73 +365,73 @@ app.post("/questions/:id/compile",function(req,res){
       }
   });
 
-  // To run testcases and verify the user's code.
-  app.post("/questions/:id/check", async function(req, res) {
+  //Submit button 
+  app.post("/questions/:id/Run",function(req,res){
     var code = req.body.code;
-    var input = req.body.input;
+    var input = question.Input2;
     var lang = req.body.lang;
    console.log(" i am inside the compile");
-      try{ console.log(" i am inside the try and catch");
-          if(lang == "C++"){console.log(" i am inside the cpp");
-              if(!input){console.log(" i am inside the if");
-                  var  envdata = {OS:"windows",cmd:"g++",options:{timeout:10000}};
-                  compiler.compileCPP(envdata,code,function(data){
-                    console.log(data.output);
-                    if(data.output)
-                      {res.send(data);}
-                    else{
-                    console.log(" i am inside else");
-                      res.end({output:"error"});}
-                  });
-              }
-              else{
-                console.log("i am inside else , when input exists");
+      try{ 
+          console.log(" i am inside the try and catch");
+          if(lang == "C++")
+            {
+             console.log(" i am inside the cpp");
+              if(input)
+              {
                   let envData = {OS:"windows",cmd:"g++",options:{timeout:10000}};
                   compiler.compileCPPWithInput(envData,code,input,function(data){
-                    console.log(data.output);
+                    console.log(input);
+                  console.log(data);
                     if(data.output)
-                      res.send(data);
+                        {
+                            console.log(question.Output2);
+                            console.log(data.output);
+
+                            if ( Number(question.Output2) === Number(data.output) ) {
+                            
+                                res.send({output:  data.output+" (Testcase Pass)"});
+                              
+                            } 
+                            else{
+                                res.send({output:  data.output+" (Testcase Fail)"}); 
+                            }
+                        }
                     else
-                      res.end({output:"error"});
-                  });
+                      res.send({output:data.error});
+                  });  
               }
           }
           else if(lang == "Java"){
-              if(!input){
-                  let envData = {OS:"windows"};
-                  compiler.compileJava(envData,code,function(data){
-                    
-                   if(data.output)
-                      res.send(data);
-                    else
-                      res.end({output:"error"});
-                  });
-              }
-              else{
-                  let envData = {OS:"windows"};
-                  compiler.compileJavaWithInput(envData,code,input,function(data){
+              if(input){
+                let envData = {OS:"windows" , options:{timeout:10000}};
+                compiler.compileJavaWithInput(envData,code,input,function(data){
                     if(data.output)
-                      res.send(data);
-                    else
-                      res.end({output:"error"});
-                  });
+                        {
+                            if (Number(question.Output2) === Number(data.output)) {
+                                res.send({output:  data.output+" (Testcase Pass)"});
+                            } 
+                            else{
+                                res.send({output:  data.output+" (Testcase Fail)"}); 
+                            }
+                        }
+                  else
+                    res.end({output:"error"});
+                });
               }
           }
           else if(lang == "Python"){
-              if(!input){
-                  let envData = {OS:"windows"};
-                  compiler.compilePython(envData,code,function(data){
-                      if(data.output)
-                        res.send(data);
-                      else
-                        res.end({output:"error"});
-                  });
-              }
-              else{
-                  let envData = {OS:"windows"};
+              if(input){
+                let envData = {OS:"windows" , options:{timeout:10000}};
                   compiler.compilePythonWithInput(envData,code,input,function(data){
-                      if(data.output)
-                       res.send(data);
+                    if(data.output)
+                        {
+                            if (Number(question.Output2) === Number(data.output)) {
+                                res.send({output:  data.output+" (Testcase Pass)"});
+                            } 
+                            else{
+                                res.send({output:  data.output+" (Testcase Fail)"}); 
+                            }
+                        }
                       else
                        res.end({output:"error"});
                   });
@@ -365,118 +441,7 @@ app.post("/questions/:id/compile",function(req,res){
       catch(e){
           console.log("Error");
       }
-  
-
-
-});
-  
-
-
-
-// app.post("/questions/:id/check", async function(req, res) {
-    
-//         var code = req.body.code;
-//         var input = req.body.input;
-//         var lang = req.body.lang;
-//         console.log("i am inside the compile2");
- 
-//         // Retrieve the predefined input from MongoDB based on the :id parameter
-//         let question = await Question.findById(req.params.id);
-//         if (!question) {
-//             return res.status(500).send({ error: "Question not found" });
-//         }
- 
-//         // Check if the user's input matches the predefined input
-//         if (input === question.testCases[0].input) {
-//             try {
-//                 console.log("i am inside the try and catch2");
-//                 if (lang == "C++") {
-//                     console.log("i am inside the cpp2");
-//                     if (!input) {
-//                         var envdata = { OS: "windows", cmd: "g++", options: { timeout: 10000 } };
-//                         compiler.compileCPP(envdata, code, function(data) {
-//                             console.log(data.output);
-//                             if (data.output) {
-//                                 res.send(data);
-//                             } else {
-//                                 console.log("i am inside else2");
-//                                 res.end({ output: "error" });
-//                             }
-//                         });
-//                     } else {
-//                         console.log("i am inside else, when input exists2");
-//                         let envData = { OS: "windows", cmd: "g++", options: { timeout: 10000 } };
-//                         compiler.compileCPPWithInput(envData, code, input, function(data) {
-//                             console.log(data.output);
-//                             if (data.output) {
-//                                 res.send(data);
-//                             } else {
-//                                 res.end({ output: "error" });
-//                             }
-//                         });
-//                     }
-//                 } else if (lang == "Java") {
-//                     if (!input) {
-//                         let envData = { OS: "windows" };
-//                         compiler.compileJava(envData, code, function(data) {
-//                             if (data.output) {
-//                                 res.send(data);
-//                             } else {
-//                                 res.end({ output: "error" });
-//                             }
-//                         });
-//                     } else {
-//                         let envData = { OS: "windows" };
-//                         compiler.compileJavaWithInput(envData, code, input, function(data) {
-//                             if (data.output) {
-//                                 res.send(data);
-//                             } else {
-//                                 res.end({ output: "error" });
-//                             }
-//                         });
-//                     }
-//                 } else if (lang == "Python") {
-//                     if (!input) {
-//                         let envData = { OS: "windows" };
-//                         compiler.compilePython(envData, code, function(data) {
-//                             if (data.output) {
-//                                 res.send(data);
-//                             } else {
-//                                 res.end({ output: "error" });
-//                             }
-//                         });
-//                     } else {
-//                         let envData = { OS: "windows" };
-//                         compiler.compilePythonWithInput(envData, code, input, function(data) {
-//                             if (data.output) {
-//                                 res.send(data);
-//                             } else {
-//                                 res.end({ output: "error" });
-//                             }
-//                         });
-//                     }
-//                 }
-//             } catch (e) {
-//                 console.log("Error");
-//             }
-//         } else {
-//             // User's input does not match predefined input
-//             return res.status(400).send({ error: "Wrong input" });
-//         }
-//     } 
-//  );
- 
-
-
-
-
-
-
-
-
-
-
-
+  });
 
 
 // <--TO SHOW HOMEPAGE -->
@@ -552,4 +517,3 @@ app.listen( 3001 , function (){
 //         res.send("<h1> Wrong Details </h1>");
 //     }
 //     }); 
-

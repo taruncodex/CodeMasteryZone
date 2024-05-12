@@ -1,598 +1,760 @@
-
-  { "_id": 1, 
-"title": "Remove Element",
-"difficulty": "",
-"description": "Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. ",
-"Input": "['nums = [3,2,2,3], val = 3','nums = [0,1,2,2,3,0,4,2], val = 2']",
-"Output": "['2, nums = [2,2,_,_]','5, nums = [0,1,4,0,3,_,_,_]']"
+{
+  "_id": 1,
+  "title": "Remove Element",
+  "difficulty": "",
+  "description": "Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. ",
+  "Input": "['nums = [3,2,2,3], val = 3','nums = [0,1,2,2,3,0,4,2], val = 2']",
+  "Output": "['2, nums = [2,2,_,_]','5, nums = [0,1,4,0,3,_,_,_]']"
 },
-    
-    { "_id": 2, 
-      "title": "Remove Duplicates from Sorted Array",
-      "description": "Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+{
+  "_id": 2,
+  "title": "Remove Duplicates from Sorted Array",
+  "description": "Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
     
     Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
     
     Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
-    Return k.",
-    "Input": "nums = [1,1,2]",
-    "Output": "2, nums = [1,2,_]"
-    },
-    
-    { "_id": 3, 
-      "title": "Merge two sorted arrays",
-      "description": "Given two sorted arrays, the task is to merge them in a sorted manner.",
-      "Input": "arr1[] = { 1, 3, 4, 5}, arr2[] = {2, 4, 6, 8}",
-      "Output":"arr3[] = {1, 2, 3, 4, 4, 5, 6, 8}"
-    },
-    
-    { "_id": 4, 
-      "title": "Counting frequencies of array elements",
-      "description": "Given an array which may contain duplicates, print all elements and their frequencies.",
-    "Input": '["arr[] = {10, 20, 20, 10, 10, 20, 5, 20}","arr[] = {10, 20, 20}"]',
-    "Output":"10 3
-             20 4
+    Return k.","Input": "nums = [1,1,2]",
+  "Output": "2, nums = [1,2,_]"
+},
+{
+  "_id": 3,
+  "title": "Merge two sorted arrays",
+  "description": "Given two sorted arrays, the task is to merge them in a sorted manner.",
+  "Input": "arr1[] = { 1, 3, 4, 5}, arr2[] = {2, 4, 6, 8}",
+  "Output": "arr3[] = {1, 2, 3, 4, 4, 5, 6, 8}"
+},
+{
+  "_id": 4,
+  "title": "Counting frequencies of array elements",
+  "description": "Given an array which may contain duplicates, print all elements and their frequencies.",
+  "Input": "[ 'arr[] = {10, 20, 20, 10, 10, 20, 5, 20}',
+              'arr[] = {10, 20, 20}']",
+  "Output":"10 320 4
              5  1
     ",
-    },
-    
-    { "_id": 5, 
-      "difficulty": "Easy",
-      "topic": "Array",
-      "title": "Find the maximum and minimum element",
-      "description": "Given an array A[] of size n, you need to find the maximum and minimum element present in the array. Your algorithm should make the minimum number of comparisons.",
-    "Input": "A[] = {-8, -3, -10, -32, -1}",
-    "Output": "Maximum: -1, Minimum: -32"
-    },{ "_id": 6, 
-      "title": "Reverse The Array",
-      "difficulty": "Easy",
-      "topic": "Array",
-      "description" : "Given an array/list 'ARR' of integers and a position ‘M’. You have to reverse the array after that position.",
-    "Input": " ARR = {1, 2, 3, 4, 5, 6} and M = 3",
-    "Output": "{1, 2, 3, 4, 6, 5}"
-    },{ "_id": 7, 
-      "title": "Search a Number",
-      "difficulty": "Easy",
-      "topic": "Array",
-      "description": "Search whether an element exists in array or not.",
-    "Input": "arr[] = { 1, 3, 4, 5}, num = 4",
-    "Output": "True"
-    },{ "_id": 8, 
-"title": "Move all zeros to the End",
-"difficulty": "Medium",
-"topic": "Array",
-"description": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.",
-"Input": "nums = [0,1,0,3,12]",
-"Output": "[1,3,12,0,0]"
-},{ "_id": 9, 
-      "title": "Sort the Array",
-      "difficulty": "Medium",
-      "topic": "Array",
-      "description": "Sort the array in ascending order.",
-    "Input": "nums = [2,4,3,9,5,12]",
-    "Output": "[2,3,4,5,9,12]"
-},{ "_id": 10, 
-      "title": "Sum of Array",
-      "difficulty": "Easy",
-      "topic": "Array",
-      "description": "Sum all the elements of the array.",
-    "Input": "arr[] = { 1, 3, 4, 5}",
-    "Output": "sum = 13"
-    }
-    //https://www.geeksforgeeks.org/top-20-linked-list-interview-question/
-    { "_id": 11,  
-      "title": "Find the middle of a given linked list",
-      "difficulty": "Easy",
-      "topic": "linkedList",
-      "description": "Auxiliary Given a singly linked list, find the middle of the linked list. For example, if the given linked list is 1->2->3->4->5 then the output should be 3. 
+},
+{
+  "_id": 5,
+  "difficulty": "Easy",
+  "topic": "Array",
+  "title": "Find the maximum and minimum element",
+  "description": "Given an array A[] of size n, you need to find the maximum and minimum element present in the array. Your algorithm should make the minimum number of comparisons.",
+  "Input": "A[] = {-8, -3, -10, -32, -1}",
+  "Output": "Maximum: -1, Minimum: -32"
+},
+{
+  "_id": 6,
+  "title": "Reverse The Array",
+  "difficulty": "Easy",
+  "topic": "Array",
+  "description": "Given an array/list 'ARR' of integers and a position ‘M’. You have to reverse the array after that position.",
+  "Input": " ARR = {1, 2, 3, 4, 5, 6} and M = 3",
+  "Output": "{1, 2, 3, 4, 6, 5}"
+},
+{
+  "_id": 7,
+  "title": "Search a Number",
+  "difficulty": "Easy",
+  "topic": "Array",
+  "description": "Search whether an element exists in array or not.",
+  "Input": "arr[] = { 1, 3, 4, 5}, num = 4",
+  "Output": "True"
+},
+{
+  "_id": 8,
+  "title": "Move all zeros to the End",
+  "difficulty": "Medium",
+  "topic": "Array",
+  "description": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.",
+  "Input": "nums = [0,1,0,3,12]",
+  "Output": "[1,3,12,0,0]"
+},
+{
+  "_id": 9,
+  "title": "Sort the Array",
+  "difficulty": "Medium",
+  "topic": "Array",
+  "description": "Sort the array in ascending order.",
+  "Input": "nums = [2,4,3,9,5,12]",
+  "Output": "[2,3,4,5,9,12]"
+},
+{
+  "_id": 10,
+  "title": "Sum of Array",
+  "difficulty": "Easy",
+  "topic": "Array",
+  "description": "Sum all the elements of the array.",
+  "Input": "arr[] = { 1, 3, 4, 5}",
+  "Output": "sum = 13"
+}
+//https://www.geeksforgeeks.org/top-20-linked-list-interview-question/
+{
+  "_id": 11,
+  "title": "Find the middle of a given linked list",
+  "difficulty": "Easy",
+  "topic": "linkedList",
+  "description": "Auxiliary Given a singly linked list, find the middle of the linked list. For example, if the given linked list is 1->2->3->4->5 then the output should be 3. 
       If there are even nodes, then there would be two middle nodes, we need to print the second middle element. 
-      For example, if the given linked list is 1->2->3->4->5->6 then the output should be 4. ",
-    "Input": "linked list = 1 -> 2 -> 3 -> 4 -> 5",
-    "Output": "3"
-    },{ "_id": 12, 
-      "title": "Reverse a Linked List",
-      "difficulty": "Easy",
-      "topic": "linkedList",
-      "description": "Given a pointer to the head node of a linked list, the task is to reverse the linked list. We need to reverse the list by changing the links between nodes.",
-    "Input": "Head of following linked list 
-    1->2->3->4->NULL ",
-    "Output": "Linked list should be changed to, 
-    4->3->2->1->NULL"
-    },{ "_id": 13, 
-      "title": "Rotate a Linked List",
-      "difficulty": "Easy",
-      "topic": "linkedList",
-      "description": "Given a singly linked list, The task is to rotate the linked list counter-clockwise by k nodes.",
-    "Input": "linked list = 10->20->30->40->50->60, k = 4",
-    "Output": "50->60->10->20->30->40."
-    },{ "_id": 14 , 
-    "title": "Program for Nth node from the end of a Linked List",
-    "difficulty": "Easy",
-    "topic": "linkedList",
-    "description": "Given a Linked List and a number N, write a function that returns the value at the Nth node from the end of the Linked List.",
+      For example, if the given linked list is 1->2->3->4->5->6 then the output should be 4. ","Input": "linked list = 1 -> 2 -> 3 -> 4 -> 5",
+  "Output": "3"
+},
+{
+  "_id": 12,
+  "title": "Reverse a Linked List",
+  "difficulty": "Easy",
+  "topic": "linkedList",
+  "description": "Given a pointer to the head node of a linked list, the task is to reverse the linked list. We need to reverse the list by changing the links between nodes.",
+  "Input": "Head of following linked list 1->2->3->4->NULL ","Output": "Linked list should be changed to, 4->3->2->1->NULL"
+},
+{
+  "_id": 13,
+  "title": "Rotate a Linked List",
+  "difficulty": "Easy",
+  "topic": "linkedList",
+  "description": "Given a singly linked list, The task is to rotate the linked list counter-clockwise by k nodes.",
+  "Input": "linked list = 10->20->30->40->50->60, k = 4",
+  "Output": "50->60->10->20->30->40."
+},
+{
+  "_id": 14,
+  "title": "Program for Nth node from the end of a Linked List",
+  "difficulty": "Easy",
+  "topic": "linkedList",
+  "description": "Given a Linked List and a number N, write a function that returns the value at the Nth node from the end of the Linked List.",
   "Input": "1 -> 2 -> 3 -> 4, N = 3",
   "Output": "2"
-  },{ "_id":15 , 
+},
+{
+  "_id": 15,
   "title": "Remove duplicate element from sorted Linked List",
   "difficulty": "Easy",
   "topic": "linkedList",
   "description": "Given a singly linked list consisting of N nodes. The task is to remove duplicates (nodes with duplicate values) from the given list (if exists).",
-"Input": "LinkedList: 2->2->4->5",
-"Output": " 2 4 5"
-},{ "_id": 16 ,
-"title": "Merge a linked list into another linked list at alternate positions",
-"difficulty": "Easy",
-"topic": "linkedList",
-"description": "Given two linked lists, insert nodes of second list into first list at alternate positions of first list. 
-For example, if first list is 5->7->17->13->11 and second is 12->10->2->4->6, the first list should become 5->12->7->10->17->2->13->4->11->6 and second list should become empty. The nodes of second list should only be inserted when there are positions available. For example, if the first list is 1->2->3 and second list is 4->5->6->7->8, then first list should become 1->4->2->5->3->6 and second list to 7->8.",
-"Input": " L1 = 5->7->17->13->11 , L2 =12->10->2->4->6",
-"Output": "5->12->7->10->17->2->13->4->11->6"
-},{ "_id":17 ,
-"title": "Function to check if a singly linked list is palindrome",
-"difficulty": "Medium",
-"topic": "linkedList",
-"description": "Given a singly linked list of characters, write a function that returns true if the given list is a palindrome, else false.",
-"Input": "R->A->D->A->R->NULL",
-"Output": "Yes"
-},{ "_id":18 , 
-"title": "Reverse a Linked List in groups of given size",
-"difficulty": "Medium",
-"topic": "linkedList",
-"description": "Given a linked list of size N. The task is to reverse every k nodes (where k is an input to the function) in the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should be considered as a group and must be reversed",
-"Input": "LinkedList: 1->2->2->4->5->6->7->8
-K = 4",
-"Output": " 4 2 2 1 8 7 6 5 "
-},{ "_id":19, 
-"title": "Convert singly linked list into circular linked list",
-"difficulty": "Medium",
-"topic": "linkedList",
-"description": "Given a singly linked list, we have to convert it into circular linked list. For example, we have been given a singly linked list with four nodes and we want to convert this singly linked list into circular linked list.",
-"Input": "",
-"Output": ""
-},{ "_id":20 , 
-"title": "Remove duplicates from an unsorted doubly linked list",
-"difficulty": "Medium",
-"topic": "linkedList",
-"description": "Given an unsorted doubly linked list containing n nodes. The problem is to remove duplicate nodes from the given list.",
-"Input": "DLL: 8<->4<->4<->6<->4<->6<->8<->4<->10<->12<->12",
-"Output": "8<->4<->6<->10<->12"
-},{ "_id": 21, 
-"title": "Reverse a Linked List in groups of given size",
-"difficulty": "Hard",
-"topic": "linkedList",
-"description": "Given a linked list, write a function to reverse every k nodes (where k is an input to the function). ",
-"Input": "1->2->3->4->5->6->7->8->NULL, K = 3 ",
-"Output": "3->2->1->6->5->4->8->7->NULL"
-},{ "_id":22 , 
-"title": "Rearrange a given linked list in-place.",
-"difficulty": "Hard",
-"topic": "linkedList",
-"description": "Given a singly linked list L0 -> L1 -> … -> Ln-1 -> Ln. Rearrange the nodes in the list so that the new formed list is : L0 -> Ln -> L1 -> Ln-1 -> L2 -> Ln-2 … You are required to do this in place without altering the nodes’ values. ",
-"Input": "1 -> 2 -> 3 -> 4",
-"Output": "1 -> 4 -> 2 -> 3"
-},{ "_id": 23, 
-"title": "Merge K sorted linked lists",
-"difficulty": "Hard",
-"topic": "linkedList",
-"description": "Given K sorted linked lists of size N each, the task is to merge them all maintaining their sorted order.",
-"Input": "K = 3, N =  4
+  "Input": "LinkedList: 2->2->4->5",
+  "Output": " 2 4 5"
+},
+{
+  "_id": 16,
+  "title": "Merge a linked list into another linked list at alternate positions",
+  "difficulty": "Easy",
+  "topic": "linkedList",
+  "description": "Given two linked lists, insert nodes of second list into first list at alternate positions of first list. 
+For example, if first list is 5->7->17->13->11 and second is 12->10->2->4->6, the first list should become 5->12->7->10->17->2->13->4->11->6 and second list should become empty. The nodes of second list should only be inserted when there are positions available. For example, if the first list is 1->2->3 and second list is 4->5->6->7->8, then first list should become 1->4->2->5->3->6 and second list to 7->8.","Input": " L1 = 5->7->17->13->11 , L2 =12->10->2->4->6",
+  "Output": "5->12->7->10->17->2->13->4->11->6"
+},
+{
+  "_id": 17,
+  "title": "Function to check if a singly linked list is palindrome",
+  "difficulty": "Medium",
+  "topic": "linkedList",
+  "description": "Given a singly linked list of characters, write a function that returns true if the given list is a palindrome, else false.",
+  "Input": "R->A->D->A->R->NULL",
+  "Output": "Yes"
+},
+{
+  "_id": 18,
+  "title": "Reverse a Linked List in groups of given size",
+  "difficulty": "Medium",
+  "topic": "linkedList",
+  "description": "Given a linked list of size N. The task is to reverse every k nodes (where k is an input to the function) in the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should be considered as a group and must be reversed",
+  "Input": "LinkedList: 1->2->2->4->5->6->7->8
+K = 4","Output": " 4 2 2 1 8 7 6 5 "
+},
+{
+  "_id": 19,
+  "title": "Convert singly linked list into circular linked list",
+  "difficulty": "Medium",
+  "topic": "linkedList",
+  "description": "Given a singly linked list, we have to convert it into circular linked list. For example, we have been given a singly linked list with four nodes and we want to convert this singly linked list into circular linked list.",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 20,
+  "title": "Remove duplicates from an unsorted doubly linked list",
+  "difficulty": "Medium",
+  "topic": "linkedList",
+  "description": "Given an unsorted doubly linked list containing n nodes. The problem is to remove duplicate nodes from the given list.",
+  "Input": "DLL: 8<->4<->4<->6<->4<->6<->8<->4<->10<->12<->12",
+  "Output": "8<->4<->6<->10<->12"
+},
+{
+  "_id": 21,
+  "title": "Reverse a Linked List in groups of given size",
+  "difficulty": "Hard",
+  "topic": "linkedList",
+  "description": "Given a linked list, write a function to reverse every k nodes (where k is an input to the function). ",
+  "Input": "1->2->3->4->5->6->7->8->NULL, K = 3 ",
+  "Output": "3->2->1->6->5->4->8->7->NULL"
+},
+{
+  "_id": 22,
+  "title": "Rearrange a given linked list in-place.",
+  "difficulty": "Hard",
+  "topic": "linkedList",
+  "description": "Given a singly linked list L0 -> L1 -> … -> Ln-1 -> Ln. Rearrange the nodes in the list so that the new formed list is : L0 -> Ln -> L1 -> Ln-1 -> L2 -> Ln-2 … You are required to do this in place without altering the nodes’ values. ",
+  "Input": "1 -> 2 -> 3 -> 4",
+  "Output": "1 -> 4 -> 2 -> 3"
+},
+{
+  "_id": 23,
+  "title": "Merge K sorted linked lists",
+  "difficulty": "Hard",
+  "topic": "linkedList",
+  "description": "Given K sorted linked lists of size N each, the task is to merge them all maintaining their sorted order.",
+  "Input": "K = 3, N =  4
 list1 = 1->3->5->7->NULL
 list2 = 2->4->6->8->NULL
-list3 = 0->9->10->11->NULL",
-"Output": "0->1->2->3->4->5->6->7->8->9->10->11"
-},{ "_id":24 , 
-"title": "Reverse words in a given string",
-"difficulty": "Easy",
-"topic": "String",
-"description": "Given a string, the task is to reverse the order of the words in the given string. ",
-"Input": "s = 'geeks quiz practice code'",
-"Output": "s = 'code practice quiz geeks'"
-},{ "_id":25 , 
-"title": "Integer to Roman",
-"difficulty": "Medium",
-"topic": "String",
-"description": "Given a number, find its corresponding Roman numeral.",
-"Input": "9",
-"Output": "IX"
-},{ "_id":26 , 
-"title": "Longest Common Prefix",
-"difficulty": "Easy",
-"topic": "String",
-"description": " Given a set of strings, find the longest common prefix.",
-"Input": "strs = {'flower','flow','flight'}",
-"Output": "fl"
-},{ "_id": 27, 
-"title": "Valid Parentheses",
-"difficulty": "Easy",
-"topic": "String",
-"description": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+list3 = 0->9->10->11->NULL","Output": "0->1->2->3->4->5->6->7->8->9->10->11"
+},
+{
+  "_id": 24,
+  "title": "Reverse words in a given string",
+  "difficulty": "Easy",
+  "topic": "String",
+  "description": "Given a string, the task is to reverse the order of the words in the given string. ",
+  "Input": "s = 'geeks quiz practice code'",
+  "Output": "s = 'code practice quiz geeks'"
+},
+{
+  "_id": 25,
+  "title": "Integer to Roman",
+  "difficulty": "Medium",
+  "topic": "String",
+  "description": "Given a number, find its corresponding Roman numeral.",
+  "Input": "9",
+  "Output": "IX"
+},
+{
+  "_id": 26,
+  "title": "Longest Common Prefix",
+  "difficulty": "Easy",
+  "topic": "String",
+  "description": " Given a set of strings, find the longest common prefix.",
+  "Input": "strs = {'flower','flow','flight'}",
+  "Output": "fl"
+},
+{
+  "_id": 27,
+  "title": "Valid Parentheses",
+  "difficulty": "Easy",
+  "topic": "String",
+  "description": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
 An input string is valid if:
 
 Open brackets must be closed by the same type of brackets.
 Open brackets must be closed in the correct order.
-Every close bracket has a corresponding open bracket of the same type.",
-"Input": "s ='()'",
-"Output": "true"
-},{ "_id": 28, 
-"title": "Regular Expression Matching",
-"difficulty": "Hard",
-"topic": "String",
-"description": "Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where:
+Every close bracket has a corresponding open bracket of the same type.","Input": "s ='()'",
+  "Output": "true"
+},
+{
+  "_id": 28,
+  "title": "Regular Expression Matching",
+  "difficulty": "Hard",
+  "topic": "String",
+  "description": "Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where:
 
 '.' Matches any single character.​​​​
 '*' Matches zero or more of the preceding element.
-The matching should cover the entire input string (not partial)",
-"Input": "s = 'aa', p = 'a'",
-"Output": "false"
-},{ "_id": 29, 
-"title": "Shortest Palindrome",
-"difficulty": "Hard",
-"topic": "String",
-"description": "You are given a string s. You can convert s to a palindrome by adding characters in front of it.
-Return the shortest palindrome you can find by performing this transformation.",
-"Input": "s = 'aacecaaa'",
-"Output": "aaacecaaa"
-},{ "_id":30 , 
-"title": "Longest Substring Without Repeating Characters",
-"difficulty": "Medium",
-"topic": "String",
-"description": "Given a string s, find the length of the longest substring without repeating characters",
-"Input": "s = 'abcabcbb'",
-"Output": "3"
-},{ "_id":31, 
-"title": "Remove K Digits",
-"difficulty": "Medium",
-"topic": "String",
-"description": "Given string num representing a non-negative integer num, and an integer k, return the smallest possible integer after removing k digits from num.",
-"Input": "num = '1432219', k = 3",
-"Output": "1219"
-},{ "_id":32 , 
-"title": "Longest Palindromic Substring",
-"difficulty": "Medium",
-"topic": "String",
-"description": "Given a string s, return the longest palindromic substring in s.",
-"Input": "s = 'babad' ",
-"Output": "'bab'"
-},{ "_id":33 , 
-"title": "Word Ladder",
-"difficulty": "Hard",
-"topic": "String",
-"description": "A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
+The matching should cover the entire input string (not partial)","Input": "s = 'aa', p = 'a'",
+  "Output": "false"
+},
+{
+  "_id": 29,
+  "title": "Shortest Palindrome",
+  "difficulty": "Hard",
+  "topic": "String",
+  "description": "You are given a string s. You can convert s to a palindrome by adding characters in front of it.
+Return the shortest palindrome you can find by performing this transformation.","Input": "s = 'aacecaaa'",
+  "Output": "aaacecaaa"
+},
+{
+  "_id": 30,
+  "title": "Longest Substring Without Repeating Characters",
+  "difficulty": "Medium",
+  "topic": "String",
+  "description": "Given a string s, find the length of the longest substring without repeating characters",
+  "Input": "s = 'abcabcbb'",
+  "Output": "3"
+},
+{
+  "_id": 31,
+  "title": "Remove K Digits",
+  "difficulty": "Medium",
+  "topic": "String",
+  "description": "Given string num representing a non-negative integer num, and an integer k, return the smallest possible integer after removing k digits from num.",
+  "Input": "num = '1432219', k = 3",
+  "Output": "1219"
+},
+{
+  "_id": 32,
+  "title": "Longest Palindromic Substring",
+  "difficulty": "Medium",
+  "topic": "String",
+  "description": "Given a string s, return the longest palindromic substring in s.",
+  "Input": "s = 'babad' ",
+  "Output": "'bab'"
+},
+{
+  "_id": 33,
+  "title": "Word Ladder",
+  "difficulty": "Hard",
+  "topic": "String",
+  "description": "A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
 
 >Every adjacent pair of words differs by a single letter.
 >Every si for 1 <= i <= k is in wordList. Note that beginWord does not need to be in wordList.
 sk == endWord
-Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.",
-"Input": "beginWord = hit, endWord = cog, wordList = ['hot','dot','dog','lot','log','cog']",
-"Output": "5"
-},{ "_id": 34, 
-"title": "Remove Duplicate Letters",
-"difficulty": "Easy",
-"topic": "Stack",
-"description": "Given a string s, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.",
-"Input": "s = 'bcabc'",
-"Output": "'abc'"
-},{ "_id": 35, 
-"title": "Reverse an array using Stack",
-"difficulty": "Easy",
-"topic": "Stack",
-"description": "Given an array arr[] of size N, the task to reverse the array using Stack.",
-"Input": "arr[] = { 10, 20, 30, 40, 50 }",
-"Output": " 50 40 30 20 10"
-},{ "_id": 36 , 
-"title": "Delete middle element of a stack",
-"difficulty": "Easy",
-"topic": "Stack",
-"description": "Given a stack with push(), pop(), and empty() operations, The task is to delete the middle element of it without using any additional data structure.",
-"Input": "Stack[] = [1, 2, 3, 4, 5]",
-"Output": "Stack[] = [1, 2, 4, 5]"
-},{ "_id":37 , 
-"title": "Reverse individual words",
-"difficulty": "Easy",
-"topic": "Stack",
-"description": "Given string str, we need to print the reverse of individual words.",
-"Input": "Hello World",
-"Output": "olleH dlroW"
-},{ "_id":38 , 
-"title": "Next Greater Element (NGE)",
-"difficulty": "Medium",
-"topic": "Stack",
-"description": "Given an array, print the Next Greater Element (NGE) for every element. ",
-"Input": "arr[] = [ 4 , 5 , 2 , 25 ]
-Output:  ",
-"Output": "4 –> 5
-          5 –> 25
+Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.","Input": "beginWord = hit, endWord = cog, wordList = ['hot','dot','dog','lot','log','cog']",
+  "Output": "5"
+},
+{
+  "_id": 34,
+  "title": "Remove Duplicate Letters",
+  "difficulty": "Easy",
+  "topic": "Stack",
+  "description": "Given a string s, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.",
+  "Input": "s = 'bcabc'",
+  "Output": "'abc'"
+},
+{
+  "_id": 35,
+  "title": "Reverse an array using Stack",
+  "difficulty": "Easy",
+  "topic": "Stack",
+  "description": "Given an array arr[] of size N, the task to reverse the array using Stack.",
+  "Input": "arr[] = { 10, 20, 30, 40, 50 }",
+  "Output": " 50 40 30 20 10"
+},
+{
+  "_id": 36,
+  "title": "Delete middle element of a stack",
+  "difficulty": "Easy",
+  "topic": "Stack",
+  "description": "Given a stack with push(), pop(), and empty() operations, The task is to delete the middle element of it without using any additional data structure.",
+  "Input": "Stack[] = [1, 2, 3, 4, 5]",
+  "Output": "Stack[] = [1, 2, 4, 5]"
+},
+{
+  "_id": 37,
+  "title": "Reverse individual words",
+  "difficulty": "Easy",
+  "topic": "Stack",
+  "description": "Given string str, we need to print the reverse of individual words.",
+  "Input": "Hello World",
+  "Output": "olleH dlroW"
+},
+{
+  "_id": 38,
+  "title": "Next Greater Element (NGE)",
+  "difficulty": "Medium",
+  "topic": "Stack",
+  "description": "Given an array, print the Next Greater Element (NGE) for every element. ",
+  "Input": "arr[] = [ 4 , 5 , 2 , 25 ]
+Output:  ","Output": "4 –> 55 –> 25
           2 –> 25
           25 –>-1"
-},{ "_id": 39, 
-"title": "Find the nearest smaller numbers on left side in an array",
-"difficulty": "Medium",
-"topic": "Stack",
-"description": "Given an array of integers, find the nearest smaller number for every element such that the smaller element is on the left side.",
-"Input": "arr[] = {1, 6, 4, 10, 2, 5}",
-"Output": "{_, 1, 1,  4, 1, 2}   First element ('1') has no element on left side. For 6, 
+},
+{
+  "_id": 39,
+  "title": "Find the nearest smaller numbers on left side in an array",
+  "difficulty": "Medium",
+  "topic": "Stack",
+  "description": "Given an array of integers, find the nearest smaller number for every element such that the smaller element is on the left side.",
+  "Input": "arr[] = {1, 6, 4, 10, 2, 5}",
+  "Output": "{_, 1, 1,  4, 1, 2}   First element ('1') has no element on left side. For 6, 
 there is only one smaller element on left side '1'. 
 For 10, there are three smaller elements on left side (1,
-6 and 4), nearest among the three elements is 4."
-},{ "_id":40 , 
-"title": "Reverse a Stack using Recursion",
-"difficulty": "Medium",
-"topic": "Stack",
-"description": "Write a program to reverse a stack using recursion, without using any loop.",
-"Input": "elements present in stack from top to bottom 1 2 3 4 ",
-"Output": "4 3 2 1"
-},{ "_id":41 , 
-"title": "Convert Infix expression to Postfix expression",
-"difficulty": "Medium",
-"topic": "Stack",
-"description": "Write a program to convert an Infix expression to Postfix form.",
-"Input": "A + B * C + D",
-"Output": "ABC*+D+"
-},{ "_id": 42, 
-"title": "The Celebrity Problem",
-"difficulty": "Hard",
-"topic": "Stack",
-"description": "In a party of N people, only one person is known to everyone. Such a person may be present at the party, if yes, (s)he doesn’t know anyone at the party. We can only ask questions like “does A know B? “. Find the stranger (celebrity) in the minimum number of questions.
-We can describe the problem input as an array of numbers/characters representing persons in the party. We also have a hypothetical function HaveAcquaintance(A, B) which returns true if A knows B, and false otherwise. How can we solve the problem?",
-"Input": "MATRIX = { {0, 0, 1, 0}, {0, 0, 1, 0}, {0, 0, 0, 0}, {0, 0, 1, 0} }",
-"Output": "id = 2
+  6 and 4), nearest among the three elements is 4."
+},
+{
+  "_id": 40,
+  "title": "Reverse a Stack using Recursion",
+  "difficulty": "Medium",
+  "topic": "Stack",
+  "description": "Write a program to reverse a stack using recursion, without using any loop.",
+  "Input": "elements present in stack from top to bottom 1 2 3 4 ",
+  "Output": "4 3 2 1"
+},
+{
+  "_id": 41,
+  "title": "Convert Infix expression to Postfix expression",
+  "difficulty": "Medium",
+  "topic": "Stack",
+  "description": "Write a program to convert an Infix expression to Postfix form.",
+  "Input": "A + B * C + D",
+  "Output": "ABC*+D+"
+},
+{
+  "_id": 42,
+  "title": "The Celebrity Problem",
+  "difficulty": "Hard",
+  "topic": "Stack",
+  "description": "In a party of N people, only one person is known to everyone. Such a person may be present at the party, if yes, (s)he doesn’t know anyone at the party. We can only ask questions like “does A know B? “. Find the stranger (celebrity) in the minimum number of questions.
+We can describe the problem input as an array of numbers/characters representing persons in the party. We also have a hypothetical function HaveAcquaintance(A, B) which returns true if A knows B, and false otherwise. How can we solve the problem?","Input": "MATRIX = { {0, 0, 1, 0}, {0, 0, 1, 0}, {0, 0, 0, 0}, {0, 0, 1, 0} }",
+  "Output": "id = 2
 Explanation: The person with ID 2 does not know anyone but everyone knows him"
-},{ "_id": 43, 
-"title": "Check if two expressions with brackets are same",
-"difficulty": "Hard",
-"topic": "Stack",
-"description": "Given two expressions in the form of strings. The task is to compare them and check if they are similar. Expressions consist of lowercase alphabets, ‘+’, ‘-‘ and ‘( )’.
-Output : Yes",
-"Input": "exp1 = '-(a+b+c)'",
-"Output": "exp2 = '-a-b-c'"
-},{ "_id":44 , 
-"title": " Sort a Stack using Recursion",
-"difficulty": "Hard",
-"topic": "Stack",
-"description": "Given a stack, the task is to sort it using recursion.", 
-"Input": " elements present in stack from top to bottom -3 14 18 -5 30",
-"Output": "30 18 14 -3 -5 The given stack is sorted know 30 > 18 > 14 > -3 > -5"
-},{ "_id": 45, 
-"title": "Search in Rotated Sorted Array",
-"difficulty": "Medium",
-"topic": "Binary Search",
-"description": "There is an integer array nums sorted in ascending order (with distinct values).
+},
+{
+  "_id": 43,
+  "title": "Check if two expressions with brackets are same",
+  "difficulty": "Hard",
+  "topic": "Stack",
+  "description": "Given two expressions in the form of strings. The task is to compare them and check if they are similar. Expressions consist of lowercase alphabets, ‘+’, ‘-‘ and ‘( )’.
+Output : Yes","Input": "exp1 = '-(a+b+c)'",
+  "Output": "exp2 = '-a-b-c'"
+},
+{
+  "_id": 44,
+  "title": " Sort a Stack using Recursion",
+  "difficulty": "Hard",
+  "topic": "Stack",
+  "description": "Given a stack, the task is to sort it using recursion.",
+  "Input": " elements present in stack from top to bottom -3 14 18 -5 30",
+  "Output": "30 18 14 -3 -5 The given stack is sorted know 30 > 18 > 14 > -3 > -5"
+},
+{
+  "_id": 45,
+  "title": "Search in Rotated Sorted Array",
+  "difficulty": "Medium",
+  "topic": "Binary Search",
+  "description": "There is an integer array nums sorted in ascending order (with distinct values).
 
-Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k
+    ], nums[k+1
+    ], ..., nums[n-1
+    ], nums[
+      0
+    ], nums[
+      1
+    ], ..., nums[k-1
+    ]
+  ] (0-indexed). For example,
+  [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    7
+  ] might be rotated at pivot index 3 and become [
+    4,
+    5,
+    6,
+    7,
+    0,
+    1,
+    2
+  ].
 
 Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
 
-You must write an algorithm with O(log n) runtime complexity.",
-"Input": "nums = [4,5,6,7,0,1,2], target = 0",
-"Output": "4"
-},{ "_id":46 , 
-"title": "Search Insert Position",
-"difficulty": "Easy",
-"topic": "Binary Search",
-"description": "Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
-You must write an algorithm with O(log n) runtime complexity.",
-"Input": "nums = [1,3,5,6], target = 5",
-"Output": " 2"
-},{ "_id":47 , 
-"title": "Sqrt(x)",
-"difficulty": "Easy",
-"topic": "Binary Search",
-"description": "Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
+You must write an algorithm with O(log n) runtime complexity.","Input": "nums = [4,5,6,7,0,1,2], target = 0",
+  "Output": "4"
+},
+{
+  "_id": 46,
+  "title": "Search Insert Position",
+  "difficulty": "Easy",
+  "topic": "Binary Search",
+  "description": "Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+You must write an algorithm with O(log n) runtime complexity.","Input": "nums = [1,3,5,6], target = 5",
+  "Output": " 2"
+},
+{
+  "_id": 47,
+  "title": "Sqrt(x)",
+  "difficulty": "Easy",
+  "topic": "Binary Search",
+  "description": "Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
 
-You must not use any built-in exponent function or operator.",
-"Input": "x = 4",
-"Output": "2"
-},{ "_id":48 , 
-"title": "Longest Increasing Subsequence",
-"difficulty": "Medium",
-"topic": "Binary Search",
-"description": "Given an integer array nums, return the length of the longest strictly increasing subsequence.",
-"Input": "nums = [10,9,2,5,3,7,101,18]",
-"Output": "4
-Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4"
-},{ "_id": 49, 
-"title": "Find Peak Element",
-"difficulty": "Medium",
-"topic": "Binary Search",
-"description": "A peak element is an element that is strictly greater than its neighbors.
+You must not use any built-in exponent function or operator.","Input": "x = 4",
+  "Output": "2"
+},
+{
+  "_id": 48,
+  "title": "Longest Increasing Subsequence",
+  "difficulty": "Medium",
+  "topic": "Binary Search",
+  "description": "Given an integer array nums, return the length of the longest strictly increasing subsequence.",
+  "Input": "nums = [10,9,2,5,3,7,101,18]",
+  "Output": "4
+Explanation: The longest increasing subsequence is [
+    2,
+    3,
+    7,
+    101
+  ], therefore the length is 4"
+},
+{
+  "_id": 49,
+  "title": "Find Peak Element",
+  "difficulty": "Medium",
+  "topic": "Binary Search",
+  "description": "A peak element is an element that is strictly greater than its neighbors.
 
 Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
 
-You may imagine that nums[-1] = nums[n] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.
+You may imagine that nums[
+    -1
+  ] = nums[n
+  ] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.
 
-You must write an algorithm that runs in O(log n) time.",
-"Input": " nums = [1,2,3,1]",
-"Output": " 2
+You must write an algorithm that runs in O(log n) time.","Input": " nums = [1,2,3,1]",
+  "Output": " 2
 Explanation: 3 is a peak element and your function should return the index number 2."
-},{ "_id": 50, 
-"title": "",
-"difficulty": "Hard",
-"topic": "Binary Search",
-"description": "Given an integer array nums and an integer k, split nums into k non-empty subarrays such that the largest sum of any subarray is minimized.
+},
+{
+  "_id": 50,
+  "title": "",
+  "difficulty": "Hard",
+  "topic": "Binary Search",
+  "description": "Given an integer array nums and an integer k, split nums into k non-empty subarrays such that the largest sum of any subarray is minimized.
 
 Return the minimized largest sum of the split.
 
-A subarray is a contiguous part of the array.",
-"Input": "nums = [7,2,5,10,8], k = 2" ,
-"Output": "18
+A subarray is a contiguous part of the array.","Input": "nums = [7,2,5,10,8], k = 2",
+  "Output": "18
 Explanation: There are four ways to split nums into two subarrays.
-The best way is to split it into [7,2,5] and [10,8], where the largest sum among the two subarrays is only 18."
-},{ "_id":51 , 
-"title": "Median of Two Sorted Arrays",
-"difficulty": "Hard",
-"topic": "Binary Search",
-"description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
-The overall run time complexity should be O(log (m+n)).", 
-"Input": "nums1 = [1,3], nums2 = [2]",
-"Output": "2.00000
-Explanation: merged array = [1,2,3] and median is 2"
-},{ "_id":52 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":53 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":54 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":55 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":56 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":57, 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":58 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":59 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":60 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
-},{ "_id":51 , 
-"title": "",
-"difficulty": "Medium",
-"topic": "Queue",
-"description": "",
-"Input": "",
-"Output": ""
+The best way is to split it into [
+    7,
+    2,
+    5
+  ] and [
+    10,
+    8
+  ], where the largest sum among the two subarrays is only 18."
+},
+{
+  "_id": 51,
+  "title": "Median of Two Sorted Arrays",
+  "difficulty": "Hard",
+  "topic": "Binary Search",
+  "description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).", "Input": "nums1 = [1,3], nums2 = [2]",
+  "Output": "2.00000
+Explanation: merged array = [
+    1,
+    2,
+    3
+  ] and median is 2"
+},
+{
+  "_id": 52,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 53,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 54,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 55,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 56,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 57,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 58,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 59,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 60,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
+},
+{
+  "_id": 51,
+  "title": "",
+  "difficulty": "Medium",
+  "topic": "Queue",
+  "description": "",
+  "Input": "",
+  "Output": ""
 }

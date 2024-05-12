@@ -1,0 +1,105 @@
+*{
+    padding: 0px;
+    margin: 0px;
+  }
+
+  /* The container */
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196f3;
+  }
+
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+  body{
+    background-color: #77b8ee96;
+    height: 100vh; 
+  }
+  #table_tag{
+    border: 1px solid black;
+    border-collapse: collapse;
+    border-spacing: 20px;
+    width: 100%;
+  }
+  tr{
+    border: 1px solid black;
+  }
+  th{
+    background-color: rgba(141, 194, 244, 0.842);
+    border: 1px solid black;
+    font-size: large;
+    text-align: center;
+  }
+  .td{
+    background-color: rgba(242, 224, 224, 0.619);
+    border: 1px solid black;
+    padding: 8px 20px;
+    font-size: larger;
+  }
+  #filter{
+    background-color: aquamarine;
+    display: inline-block;
+    padding: 5vh 50px;
+    width: 280px; 
+    min-height: calc(100% - 70px);
+  }
+  #quesTable{
+       margin-top: -10px;
+       width: calc(100% - 280px);
+       float: right;
+  }

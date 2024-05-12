@@ -5,145 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Practice Question Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="question.css"> -->
-    <style>
-      *{
-        padding: 0px;
-        margin: 0px;
-      }
+    <link rel="stylesheet" href="css/project_CSS.css">
+    <link rel="stylesheet" href="css/try.css">
 
-      /* The container */
-      .container {
-        display: block;
-        position: relative;
-        padding-left: 35px;
-        margin-bottom: 12px;
-        cursor: pointer;
-        font-size: 20px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+    <%- include('partials/navbar_css') %>
 
-      /* Hide the browser's default radio button */
-      .container input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-      }
-
-      /* Create a custom radio button */
-      .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 25px;
-        width: 25px;
-        background-color: #eee;
-        border-radius: 50%;
-      }
-
-      /* On mouse-over, add a grey background color */
-      .container:hover input ~ .checkmark {
-        background-color: #ccc;
-      }
-
-      /* When the radio button is checked, add a blue background */
-      .container input:checked ~ .checkmark {
-        background-color: #2196f3;
-      }
-
-      /* Create the indicator (the dot/circle - hidden when not checked) */
-      .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-      }
-
-      /* Show the indicator (dot/circle) when checked */
-      .container input:checked ~ .checkmark:after {
-        display: block;
-      }
-
-      /* Style the indicator (dot/circle) */
-      .container .checkmark:after {
-        top: 9px;
-        left: 9px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: white;
-      }
-      body{
-        background-color: #77b8ee96;
-        height: 100vh; 
-      }
-      table{
-        border: 1px solid black;
-        border-collapse: collapse;
-        border-spacing: 20px;
-        width: 100%;
-      }
-      tr{
-        border: 1px solid black;
-        height: 4vh;
-      }
-      th{
-        background-color: rgba(141, 194, 244, 0.842);
-        border: 1px solid black;
-        font-size: large;
-        text-align: center;
-      }
-      td{
-        background-color: rgba(242, 224, 224, 0.619);
-        border: 1px solid black;
-        padding: 8px 20px;
-        font-size: larger;
-      }
-      #filter{
-        background-color: aquamarine;
-        display: inline-block;
-        padding: 5vh 50px;
-        width: 280px; 
-        height: calc(100% - 50px);
-      }
-      #quesTable{
-           width: calc(100% - 280px);
-           float: right;
-      }
-      nav{
-        background-color: black;
-        color: white;
-        padding-left: 20px;
-        height: 50px;
-        width: 100%;
-      }
-    </style>
   </head>
   <body>
-      <nav>
-       <h2>CodeMysteryZone</h2>
-
-        <button class="btn btn-primary mx-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="float: right; margin-top: -43px; margin-right: 10px; font-size: 20px; border-radius: 50%;">
-           <%=username[0]%>
-           
-        </button>
-        
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Profile</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <label for="name">User:</label>
-            <span><%=username%></span>
-            <label for="email">Email:</label>
-            <span><%=email%></span>
-          </div>
-        </div>
-
-      </nav>
+      
+    <%- include('partials/navbar') %>
 
     <div id="filter"> 
         <h3>DIFFICULTY</h3>
@@ -171,7 +41,7 @@
         <span class="checkmark"></span>
         </label>
         <label class="container">Linked List
-        <input type="radio" name="topic" value="linkedList">
+        <input type="radio" name="topic" value="Linked List">
         <span class="checkmark"></span>
         </label>
         <label class="container">Stack
@@ -190,32 +60,31 @@
 
            <!-- Add Question here -->
      <div id="quesTable">
-      <table>
+      <table id="table_tag">
           <thead> <!-- Heading -->
             <tr>
-                <th style="width: 1vw;">S.N.</th>
+                <th style="width: 45px;">S.N.</th>
                 <th>Title</th>
-                <th id="difficulty" style="width: 7vw; ">Difficulty</th>
-                <th id="topic" style="width: 12vw; ">Topic</th> 
+                <th id="difficulty" style="width: 110px; ">Difficulty</th>
+                <th id="topic" style="width: 180px; ">Topic</th> 
             </tr>
           </thead>
 
           <tbody>
             <% questions.forEach((question, index) => { %>
               <tr>
-                <td><%= (currentPage  - 1) * 18 + index + 1 %></td>
-                <td><a href="/questions/<%= question._id %>" style="text-decoration: none; color: black;"><%= question.title %></a></td>
-                <td style="text-align: center;"><%= question.difficulty %></td>
-                <td style="text-align: center;"><%= question.topic %></td>
+                <td class="td"><%= (currentPage  - 1) * 18 + index + 1 %></td>
+                <td class="td"><a href="/questions/<%= question._id %>" style="text-decoration: none; color: black;"><%= question.title %></a></td>
+                <td class="td" style="text-align: center;"><%= question.difficulty %></td>
+                <td class="td" style="text-align: center;"><%= question.topic %></td>
               </tr>
             <% }); %>
           </tbody>
       </table>
      </div>
-  
 
   <!-- Pagination -->
-   <div aria-label="Page navigation example" style="position: absolute; bottom: 50px; left: 20px;">
+   <div aria-label="Page navigation example" style="position:relative;  left: 19%; top: 6vh;">
     <ul class="pagination">
       <% if (currentPage > 1) { %>
         <li class="page-item"><a class="page-link" href="/?page=1">First</a></li>
