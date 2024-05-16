@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
-// compiler addition 
+// compiler addition
 const options = {stats:true};
 compiler.init(options);  //init() creates a folder named temp in your project directory which is used for storage purpose. Before using other methods , make sure to call init() method.
-const upload = multer({ dest: 'uploads/' }); 
+const upload = multer({ dest: 'uploads/' });
 
 // <-- setting the mongodb -->//
 const uri = 'mongodb://localhost:27017/CMZ';
@@ -41,7 +41,7 @@ const UserSchema =  new mongoose.Schema({
         // Validate(value){
         //   if(!validator.isEmail(value)){
         //     throw new Error("Email is invalid");
-        //   }  
+        //   }
         // }
       } ,
      password: {
@@ -57,14 +57,14 @@ const UserSchema =  new mongoose.Schema({
      country:String,
      about:String
 });
- 
+
  // <-- Defing the loginUser Scema -->
 const loginSchema =  new mongoose.Schema({
       email: {
         type: String,
         required: true,
         //unique: true// Ensures uniqueness
-      } , 
+      } ,
      password: {
         type: String,
         required: [true, "Password is required"]
@@ -80,7 +80,7 @@ const loginSchema =  new mongoose.Schema({
     description: String,
     Input: mongoose.Schema.Types.Mixed, // Can be a string or array of strings
     Output: mongoose.Schema.Types.Mixed,
-    Input2: mongoose.Schema.Types.Mixed, 
+    Input2: mongoose.Schema.Types.Mixed,
     Output2: mongoose.Schema.Types.Mixed
   });
 
@@ -96,16 +96,16 @@ const Question = mongoose.model('Question', questionSchema  );
 
 app.post('/signup', async function (req, res) {
     const { username, mail, password } = req.body; // Destructure the request body
-        
+
     //Check if the email already exists
     const existingUser = await Cmzuser.findOne({ email: mail });
     if (existingUser) {
         res.sendFile(__dirname + "/failure.html");
-        
+
     } else {
         //If email is unique, create a new User instance and save the user's information into the database
         const newUser = new Cmzuser({
-            userName: username, 
+            userName: username,
             email: mail,
             password: password
         });
@@ -128,7 +128,7 @@ if(Check.password === password2){
 }else{
     res.send("<h1> Wrong Details </h1>");
 }
-}); 
+});
 
 
 app.post("/submit", async (req, res) => {
@@ -150,7 +150,7 @@ app.post("/submit", async (req, res) => {
             city: city,
             country: country,
             about: about_me
-          } 
+          }
         });
         console.log(resu);
         // Redirect to appropriate page upon successful submission
@@ -178,7 +178,7 @@ app.get("/", async function(req, res) {
         // console.log(Check.profile_pic);
 
         // const retrievedImageData = await Buffer.from(Check.profile_pic, 'base64');
-         
+
         // console.log(retrievedImageData);
 
         // Render the try.ejs file with the necessary variables
@@ -186,7 +186,7 @@ app.get("/", async function(req, res) {
             questions: questions,
             totalPages: totalPages,
             currentPage: page,
-            profile_pic: Check.profile_pic, 
+            profile_pic: Check.profile_pic,
             userName: Check.userName,
             email:Check.email,
             first: Check.first,
@@ -209,7 +209,7 @@ app.get("/", async function(req, res) {
 app.get("/questions", async (req, res) => {
     const { difficulty, topic } = req.query;
     let query = {};
-    
+
     const page = parseInt(req.query.page) || 1; // Get the current page from query params, default to 1
     const perPage = 14; // Number of questions per page
     // Build the query based on provided parameters
@@ -219,8 +219,8 @@ app.get("/questions", async (req, res) => {
     if (topic) {
         query.topic = topic;
     }
-    
-    
+
+
     try {
         const totalQuestions = await Question.countDocuments();
         const totalPages = Math.ceil(totalQuestions / perPage);
@@ -228,12 +228,12 @@ app.get("/questions", async (req, res) => {
         const questions1 = await Question.find(query)
             .skip((page - 1) * perPage) // Skip the correct number of documents
             .limit(perPage); // Limit the number of documents
-        
+
         res.render('try', {
             questions:    questions1,
             totalPages:   totalPages,
             currentPage:  page,
-            profile_pic:  Check.profile_pic, 
+            profile_pic:  Check.profile_pic,
             userName:     Check.userName,
             email:        Check.email,
             first:        Check.first,
@@ -244,7 +244,7 @@ app.get("/questions", async (req, res) => {
             country:      Check.country,
             about:        Check.about
         });
-        
+
 
 
     } catch (err) {
@@ -269,7 +269,7 @@ compiler.flush(function(){
         }
         res.render('singleQuestion',{
             questions   :   question,
-            profile_pic :   Check.profile_pic, 
+            profile_pic :   Check.profile_pic,
             userName    :   Check.userName,
             email       :   Check.email,
             first       :   Check.first,
@@ -278,8 +278,8 @@ compiler.flush(function(){
             contact     :   Check.contact,
             city        :   Check.city,
             country     :   Check.country,
-            about       :   Check.about 
-            
+            about       :   Check.about
+
             });
     }
      catch(err){
@@ -288,7 +288,7 @@ compiler.flush(function(){
      }
 });
 
-// cmpiler post 
+// cmpiler post
 app.post("/questions/:id/compile",function(req,res){
     var code = req.body.code;
     var input = req.body.input;
@@ -299,7 +299,7 @@ app.post("/questions/:id/compile",function(req,res){
               if(!input){console.log(" i am inside the if");
                   var  envdata = {OS:"windows",cmd:"g++",options:{timeout:10000}};
                   compiler.compileCPP(envdata,code,function(data){
-                   
+
                     if(data.output)
                       {res.send(data);}
                     else{
@@ -322,7 +322,7 @@ app.post("/questions/:id/compile",function(req,res){
               if(!input){
                   let envData = {OS:"windows"};
                   compiler.compileJava(envData,code,function(data){
-                    
+
                    if(data.output)
                       res.send(data);
                     else
@@ -365,85 +365,105 @@ app.post("/questions/:id/compile",function(req,res){
       }
   });
 
-  //Submit button 
-  app.post("/questions/:id/Run",function(req,res){
-    var code = req.body.code;
-    var input = question.Input2;
-    var lang = req.body.lang;
-   console.log(" i am inside the compile");
-      try{ 
-          console.log(" i am inside the try and catch");
-          if(lang == "C++")
-            {
-             console.log(" i am inside the cpp");
-              if(input)
+  //Submit button
+    app.post("/questions/:id/Run",function(req,res){
+      var code = req.body.code;
+      var input = question.Input2;
+      var lang = req.body.lang;
+
+      console.log(question.Input);
+        try{
+            quesOutput = false;
+            if(lang == "C++")
               {
-                  let envData = {OS:"windows",cmd:"g++",options:{timeout:10000}};
-                  compiler.compileCPPWithInput(envData,code,input,function(data){
+                if(input)
+                {
+                    let envData = {OS:"windows",cmd:"g++",options:{timeout:10000}};
+                    compiler.compileCPPWithInput(envData,code,input,function(data){
                     console.log(input);
-                  console.log(data);
-                    if(data.output)
-                        {
-                            console.log(question.Output2);
-                            console.log(data.output);
+                    console.log(data);
+                  if(data.output)
+                          {
+                             console.log(question.Output2);
+                             console.log(data.output);
+                              if ( question.Output2 == data.output.toString() ) {
+                                    quesOutput = true;
+                                  res.send({output:  data.output+" (Testcase Pass)"});
 
-                            if ( Number(question.Output2) === Number(data.output) ) {
-                            
-                                res.send({output:  data.output+" (Testcase Pass)"});
-                              
-                            } 
-                            else{
-                                res.send({output:  data.output+" (Testcase Fail)"}); 
-                            }
-                        }
-                    else
-                      res.send({output:data.error});
-                  });  
-              }
-          }
-          else if(lang == "Java"){
-              if(input){
-                let envData = {OS:"windows" , options:{timeout:10000}};
-                compiler.compileJavaWithInput(envData,code,input,function(data){
-                    if(data.output)
-                        {
-                            if (Number(question.Output2) === Number(data.output)) {
-                                res.send({output:  data.output+" (Testcase Pass)"});
-                            } 
-                            else{
-                                res.send({output:  data.output+" (Testcase Fail)"}); 
-                            }
-                        }
-                  else
-                    res.end({output:"error"});
-                });
-              }
-          }
-          else if(lang == "Python"){
-              if(input){
-                let envData = {OS:"windows" , options:{timeout:10000}};
-                  compiler.compilePythonWithInput(envData,code,input,function(data){
-                    if(data.output)
-                        {
-                            if (Number(question.Output2) === Number(data.output)) {
-                                res.send({output:  data.output+" (Testcase Pass)"});
-                            } 
-                            else{
-                                res.send({output:  data.output+" (Testcase Fail)"}); 
-                            }
-                        }
+                              } 
+                              else{
+                                  res.send({output:  data.output+" (Testcase Fail)"});
+                              }
+                          }
                       else
-                       res.end({output:"error"});
+                        res.send({output:data.error});
+                    });
+                }
+            }
+            else if(lang == "Java"){
+                if(input){
+                  let envData = {OS:"windows" , options:{timeout:10000}};
+                  compiler.compileJavaWithInput(envData,code,input,function(data){
+                      if(data.output)
+                          {
+                              if ( question.Output == data.output.toString()  ) {
+                                      quesOutput = true;
+                                  res.send({output:  data.output+" (Testcase Pass)"});
+                              }
+                              else{
+                                  res.send({output:  data.output+" (Testcase Fail)"});
+                              }
+                          }
+                    else
+                    res.send({output:data.error});
                   });
-              }
+                }
+            }
+            else if(lang == "Python"){
+                if(input){
+                  let envData = {OS:"windows" , options:{timeout:10000}};
+                    compiler.compilePythonWithInput(envData,code,input,function(data){
+                      if(data.output)
+                          {
+                              if ( question.Output == data.output ) {
+                                      quesOutput = true;
+                                  res.send({output:  data.output+" (Testcase Pass)"});
+                              }
+                              else{
+                                  res.send({output:  data.output+" (Testcase Fail)"});
+                              }
+                          }
+                        else
+                        res.send({output:data.error});
+                    });
+                }
+            }
+        }
+        catch(e){
+            console.log("Error");
+        }
+    });
+
+
+    app.post("/quesSuccess",async(req,res)=>{
+        try {
+           console.log(question._id);
+           find
+
+
+
+
+            console.log(quesOutput);
+          if (quesOutput) {
+            
+              res.render("quesSuccess",{userName:Check.userName});
+          } else {
+              res.send("Not match");
           }
-      }
-      catch(e){
-          console.log("Error");
-      }
-  });
-
-
+        } catch (error) {
+            res.send("Internal server error");
+        }
+    })
 // <--TO SHOW HOMEPAGE -->
 app.get("/home" , function(req , res){
     res.sendFile(__dirname + "/HomePage.html")
@@ -488,13 +508,13 @@ app.get("/aboutUs", function (req , res) {
 
 app.listen( 3001 , function (){
     console.log("listening on the port 3001");
-}); 
+});
 
 
 
 // app.post('/signup',   function(req, res) {
 //     const { name, email, password } = req.body; // Destructure the request body
-  
+
 //     // If email is unique, create a new User instance
 //     const newUser = new Cmzuser({
 //       name: name,
@@ -507,7 +527,7 @@ app.listen( 3001 , function (){
 
 
 
-// <--  split screen rendering --> 
+// <--  split screen rendering -->
 // app.post("/login", async function(req,res){
 //     const {mail , password2 } = req.body;
 //      Check = await Cmzuser.findOne({ email: mail });
@@ -516,4 +536,4 @@ app.listen( 3001 , function (){
 //     }else{
 //         res.send("<h1> Wrong Details </h1>");
 //     }
-//     }); 
+//     });
