@@ -11,7 +11,7 @@
    
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <button class="btn btn-primary mx-3 " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="profile_icon">
-        <%=  email[0].toUpperCase()   %>
+        <%=  user.email[0].toUpperCase()   %>
       </button>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
@@ -37,41 +37,42 @@
   <div class="offcanvas-body" id="profile_body">
     <div style="text-align: center;">
       <div style="height:200px; width:200px; border-radius: 50%; border: 1px solid black; margin-left: 22%;">
-        <img src="<%=profile_pic%>" alt="Profile" height="200px" width="200px" style="border-radius: 50%;">
-      </div>
+        <img src="<%= user.avatar %>" alt="<%= user.name %>'s avatar" width="200" height="200" style="border-radius: 50%;">
+       </div>
       <br>
-      <p style="font-size: larger;"><%=about%></p>
+      <p style="font-size: larger;"><%=user.about%></p>
     </div>
     <table>
       <tr>
         <td class="first_col bg-primary-subtle">Username</td>
-        <td class="bg-primary-subtle"><%=userName%></td>
+        <td class="bg-primary-subtle"><%=user.userName%></td>
       </tr>
       <tr>
         <td class="first_col bg-warning-subtle">Name</td>
-        <td class="bg-warning-subtle"><%=first%> <%=last%></td>
+        <td class="bg-warning-subtle"><%=user.first%> <%=user.last%></td>
       </tr>
       <tr>
         <td class="first_col bg-primary-subtle">Email</td>
-        <td class="bg-primary-subtle"><%=email%></td>
+        <td class="bg-primary-subtle"><%=user.email%></td>
       </tr>
       <tr>
         <td class="first_col bg-warning-subtle">Contact_No</td>
-        <td class="bg-warning-subtle"><%=contact%></td>
+        <td class="bg-warning-subtle"><%=user.contact%></td>
       </tr>
       <tr>
         <td class="first_col bg-primary-subtle">Address</td>
-        <td class="bg-primary-subtle"><%=address%></td>
+        <td class="bg-primary-subtle"><%=user.address%></td>
       </tr>
       <tr>
         <td class="first_col bg-warning-subtle ">City</td>
-        <td class="bg-warning-subtle"><%=city%></td>
+        <td class="bg-warning-subtle"><%=user.city%></td>
       </tr>
       <tr>
         <td class="first_col bg-primary-subtle">Country</td>
-        <td class="bg-primary-subtle"><%=country%></td>
+        <td class="bg-primary-subtle"><%=user.country%></td>
       </tr>
     </table>
     <a href=""> <button class="btn btn-dark"> Edit Profile  </button></a>
   </div>
 </div>
+

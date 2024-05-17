@@ -5,18 +5,26 @@ const compiler = require("compilex");
 const validator = require("validator");
 const multer = require('multer');
 
-// const compilerApi = require('./api');
-
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'public/uploads/');
+    },
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + '-' + file.originalname);
+    }
+  });
+  
+const upload = multer({ storage: storage });
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: true}));
 app.use(bodyParser.json());
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
-// compiler addition
+// compiler addition 
 const options = {stats:true};
-compiler.init(options);  //init() creates a folder named temp in your project directory which is used for storage purpose. Before using other methods , make sure to call init() method.
-const upload = multer({ dest: 'uploads/' });
+compiler.init(options);  //init() creates a folder named temp in your project directory which is used for storage purpose. Before using other methods , make sure to call init() method. 
 
 // <-- setting the mongodb -->//
 const uri = 'mongodb://localhost:27017/CMZ';
@@ -37,18 +45,19 @@ const UserSchema =  new mongoose.Schema({
       email: {
         type: String,
         required: true,
-        unique: true,  // Ensures uniqueness
-        // Validate(value){
-        //   if(!validator.isEmail(value)){
-        //     throw new Error("Email is invalid");
-        //   }
-        // }
+        unique: true,
+        validate: {
+          validator: function(v) {
+            return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+          },
+          message: props => `${props.value} is not a valid email address!`
+        }
       } ,
      password: {
         type: String,
         required: [true, "Password is required"]
      },
-     profile_pic:String,
+     avatar:String,
      first:String,
      last:String,
      address:String,
@@ -123,24 +132,29 @@ const {mail , password2 } = req.body;
 
  Check = await Cmzuser.findOne({ email: mail });
 
-if(Check.password === password2){
-    res.render('profile', {userName: Check.userName,useremail : Check.email});
-}else{
+if(Check){
+    if(Check.password === password2){
+        res.render('profile', {userName: Check.userName, useremail : Check.email});
+    }else{
     res.send("<h1> Wrong Details </h1>");
-}
+   }
+ }
+else{
+   res.sendFile(__dirname + "/failure2.html");
+ }
 });
 
 
-app.post("/submit", async (req, res) => {
-    const { profile, username, mail, first_name, last_name, address, contact_no, city, country, about_me } = req.body;
+app.post("/submit",upload.single('avatar'), async (req, res) => {
+    const { username, mail, first_name, last_name, address, contact_no, city, country, about_me } = req.body;
+
+    const avatarPath = `/uploads/${req.file.filename}`; 
 
     try {
-        const imgBase64 = profile.toString('base64');
-        // Update user profile information
       const resu = await Cmzuser.updateOne({email: Check.email},
      {
       $set:{
-            profile_pic: imgBase64, // Assuming you want to store the image as base64 string
+            avatar:avatarPath,
             userName: username,
             email:mail,
             first: first_name,
@@ -150,11 +164,9 @@ app.post("/submit", async (req, res) => {
             city: city,
             country: country,
             about: about_me
-          }
+          } 
         });
-        console.log(resu);
-        // Redirect to appropriate page upon successful submission
-        res.redirect("/"); // Redirect to home page or any other page as needed
+        res.redirect("/"); 
     } catch (error) {
         console.error("Error updating user profile:", error);
         res.status(500).send(error.message); // Send error message to client
@@ -175,28 +187,13 @@ app.get("/", async function(req, res) {
             .skip((page - 1) * perPage) // Skip the correct number of documents
             .limit(perPage); // Limit the number of documents
 
-        // console.log(Check.profile_pic);
-
-        // const retrievedImageData = await Buffer.from(Check.profile_pic, 'base64');
-
-        // console.log(retrievedImageData);
 
         // Render the try.ejs file with the necessary variables
         res.render('try', {
             questions: questions,
             totalPages: totalPages,
             currentPage: page,
-            profile_pic: Check.profile_pic,
-            userName: Check.userName,
-            email:Check.email,
-            first: Check.first,
-            last: Check.last,
-            address: Check.address,
-            contact: Check.contact,
-            city: Check.city,
-            country: Check.country,
-            about: Check.about
-
+            user: Check
         });
     } catch (err) {
         console.error('Error fetching questions:', err);
@@ -229,21 +226,12 @@ app.get("/questions", async (req, res) => {
             .skip((page - 1) * perPage) // Skip the correct number of documents
             .limit(perPage); // Limit the number of documents
 
-        res.render('try', {
-            questions:    questions1,
-            totalPages:   totalPages,
-            currentPage:  page,
-            profile_pic:  Check.profile_pic,
-            userName:     Check.userName,
-            email:        Check.email,
-            first:        Check.first,
-            last :        Check.last,
-            address:      Check.address,
-            contact:      Check.contact,
-            city:         Check.city,
-            country:      Check.country,
-            about:        Check.about
-        });
+            res.render('try', {
+                questions: questions1,
+                totalPages: totalPages,
+                currentPage: page,
+                user:Check
+            });
 
 
 
@@ -267,20 +255,7 @@ compiler.flush(function(){
         if(!question){
             return res.status(404).send("Question not found");
         }
-        res.render('singleQuestion',{
-            questions   :   question,
-            profile_pic :   Check.profile_pic,
-            userName    :   Check.userName,
-            email       :   Check.email,
-            first       :   Check.first,
-            last        :   Check.last,
-            address     :   Check.address,
-            contact     :   Check.contact,
-            city        :   Check.city,
-            country     :   Check.country,
-            about       :   Check.about
-
-            });
+        res.render('singleQuestion',{questions: question,user:Check});
     }
      catch(err){
       console.error("Error fetching question: ", err);
@@ -289,32 +264,40 @@ compiler.flush(function(){
 });
 
 // cmpiler post
+let quesOutput = false;
 app.post("/questions/:id/compile",function(req,res){
     var code = req.body.code;
     var input = req.body.input;
     var lang = req.body.lang;
-   console.log(" i am inside the compile");
-      try{ console.log(" i am inside the try and catch");
-          if(lang == "C++"){console.log(" i am inside the cpp");
-              if(!input){console.log(" i am inside the if");
+   
+      try{
+
+        quesOutput = false;
+
+          if(lang == "C++")
+            {
+              if(!input)
+                {
                   var  envdata = {OS:"windows",cmd:"g++",options:{timeout:10000}};
                   compiler.compileCPP(envdata,code,function(data){
-
+                   
                     if(data.output)
-                      {res.send(data);}
+                      {
+                       res.send(data);
+                       }
                     else{
-                    console.log(" i am inside else");
-                      res.end({output:"error"});}
+                    res.send({output:data.error});}
                   });
               }
               else{
                   let envData = {OS:"windows",cmd:"g++",options:{timeout:10000}};
                   compiler.compileCPPWithInput(envData,code,input,function(data){
-                    console.log(data);
-                    if(data.output)
-                      res.send(data);
+                    if(data.output){
+                        res.send(data);
+                    }
+                      
                     else
-                      res.end({output:"error"});
+                    res.send({output:data.error});
                   });
               }
           }
@@ -322,11 +305,11 @@ app.post("/questions/:id/compile",function(req,res){
               if(!input){
                   let envData = {OS:"windows"};
                   compiler.compileJava(envData,code,function(data){
-
+                    
                    if(data.output)
                       res.send(data);
                     else
-                      res.end({output:"error"});
+                    res.send({output:data.error});
                   });
               }
               else{
@@ -335,7 +318,7 @@ app.post("/questions/:id/compile",function(req,res){
                     if(data.output)
                       res.send(data);
                     else
-                      res.end({output:"error"});
+                    res.send({output:data.error});
                   });
               }
           }
@@ -346,7 +329,7 @@ app.post("/questions/:id/compile",function(req,res){
                       if(data.output)
                         res.send(data);
                       else
-                        res.end({output:"error"});
+                      res.send({output:data.error});
                   });
               }
               else{
@@ -355,7 +338,7 @@ app.post("/questions/:id/compile",function(req,res){
                       if(data.output)
                        res.send(data);
                       else
-                       res.end({output:"error"});
+                      res.send({output:data.error});
                   });
               }
           }
@@ -406,7 +389,7 @@ app.post("/questions/:id/compile",function(req,res){
                   compiler.compileJavaWithInput(envData,code,input,function(data){
                       if(data.output)
                           {
-                              if ( question.Output == data.output.toString()  ) {
+                              if ( question.Output2 == data.output.toString()  ) {
                                       quesOutput = true;
                                   res.send({output:  data.output+" (Testcase Pass)"});
                               }
@@ -425,7 +408,7 @@ app.post("/questions/:id/compile",function(req,res){
                     compiler.compilePythonWithInput(envData,code,input,function(data){
                       if(data.output)
                           {
-                              if ( question.Output == data.output ) {
+                              if ( question.Output2 == data.output ) {
                                       quesOutput = true;
                                   res.send({output:  data.output+" (Testcase Pass)"});
                               }
@@ -445,15 +428,9 @@ app.post("/questions/:id/compile",function(req,res){
     });
 
 
-    app.post("/quesSuccess",async(req,res)=>{
+app.post("/quesSuccess",async(req,res)=>{
         try {
-           console.log(question._id);
-           find
-
-
-
-
-            console.log(quesOutput);
+           
           if (quesOutput) {
             
               res.render("quesSuccess",{userName:Check.userName});

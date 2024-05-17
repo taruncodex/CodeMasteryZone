@@ -135,7 +135,7 @@ a{
 <body>
    <div id="container">
      <h2 style="background: #91d4ea; padding: 10px 30px; font-weight: 700; font-size: 30px;">My Profile</h2>
-     <form action="/submit" method="post">
+     <form action="/submit" method="post" enctype="multipart/form-data">
       <div id="details">
         <h2 style="padding: 10px 10px 0px 10px;">User Information</h2>
         <div id="user_info">
@@ -189,10 +189,10 @@ a{
          
       </div>
      <div id="img_container">
-        <div id="img">
-          <img src="/Public/image/default profile.png" id="profile" alt="Profile" height="200px" width="200px" style="border-radius: 8px;">
-        </div>
-       <input type="file" name="profile" accept="image/*" onchange="picture(event)">
+      <div id="img">
+        <img src="/Public/image/default profile.png" id="profile" alt="Profile" height="200px" width="200px" style="border-radius: 8px;">
+      </div>
+     <input type="file" id="avatar" name="avatar" accept="image/*" onchange="picture(event)" required>
      </div>
     </form>
    </div>
